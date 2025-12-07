@@ -32,7 +32,7 @@
     <section class="panel chavruta-panel">
       <div class="panel-header">
         <h2>Chavruta Study Partner</h2>
-        <span class="panel-tag">Doorway</span>
+        <span class="panel-tag">Beta</span>
       </div>
 
       <p class="chavruta-tagline">
@@ -41,35 +41,72 @@
       </p>
 
       <div class="chavruta-grid">
-        <div>
+        <div class="chavruta-info">
+          <h3 class="mini-heading">How to use this doorway</h3>
           <p>
-            This page is the gateway for your AI chavruta. In time, this space will open into
-            a live conversation room where you can bring a pasuk, a sugya, or a question of heart,
-            and explore it gently with structured prompts.
+            Bring a verse, a teaching, or a question of heart. Choose a mode, and speak to your
+            chavruta as you would to a study partner. The chavruta will respond with questions,
+            reflections, and sources to explore.
           </p>
 
-          <p>
-            The chavruta here will not give psak or issue rulings. Instead, it will offer sources,
-            questions, and perspectives, and will encourage you to bring halakhic questions to a
-            qualified rabbi.
+          <ul class="soft-list">
+            <li><strong>Study a text:</strong> Paste a pasuk, a line of Mishnah, or a teaching.</li>
+            <li><strong>Ask a question:</strong> Share something you’re wrestling with.</li>
+            <li><strong>Reflect:</strong> Use the chavruta to help you articulate your thoughts.</li>
+          </ul>
+
+          <p class="chavruta-note">
+            This chavruta does <strong>not</strong> give halachic rulings or medical advice.
+            For halachic questions, please ask a qualified rabbi. For health or mental health
+            questions, please speak with a professional.
           </p>
         </div>
 
-        <div>
-          <h3 class="mini-heading">What this chavruta will do</h3>
-          <ul class="soft-list">
-            <li>Walk through a text line by line, in Hebrew and English.</li>
-            <li>Ask you gentle questions rather than rush to answers.</li>
-            <li>Offer background from Torah, Midrash, and classic sources.</li>
-            <li>Help you collect notes and questions for a human teacher.</li>
-          </ul>
+        <div class="chavruta-chat">
+          <div class="chat-header">
+            <span>Chavruta Console</span>
+            <span class="chat-status" id="chat-status">Ready</span>
+          </div>
+
+          <div id="chat-log" class="chat-log">
+            <div class="chat-message system">
+              <div class="chat-bubble">
+                שלום וברכה. I am your AI chavruta. Bring a text or a question, and we will
+                explore it gently together. I do not give halachic rulings; I help you think,
+                notice, and prepare questions for your teachers.
+              </div>
+            </div>
+          </div>
+
+          <form id="chat-form" class="chat-form">
+            <label class="chat-label" for="chat-input">
+              Your text or question
+            </label>
+            <textarea id="chat-input" rows="4"
+                      placeholder="For example: ‘I am learning Bereishit 1:1 and I wonder what “tohu va-vohu” really means…’"></textarea>
+
+            <div class="chat-footer">
+              <label class="chat-mode-label">
+                Mode
+                <select id="chat-mode">
+                  <option value="text">Study a verse / text</option>
+                  <option value="question">Question of heart</option>
+                  <option value="reflection">Quiet reflection</option>
+                </select>
+              </label>
+
+              <button type="submit" class="btn primary" id="chat-send">
+                Ask chavruta
+              </button>
+            </div>
+
+            <p class="chat-disclaimer">
+              This is an experimental study tool. It may be inaccurate or incomplete.
+              Always check important matters with real teachers and trusted sources.
+            </p>
+          </form>
         </div>
       </div>
-
-      <p class="chavruta-note">
-        For now, the wiring is still being prepared. When the time is right, this doorway will
-        open into that live chavruta experience — alef by alef, sugya by sugya.
-      </p>
     </section>
   </main>
 
@@ -91,5 +128,7 @@
       &copy; 2025 LuminaNexus.org. All rights reserved.
     </p>
   </footer>
+
+  <script src="chavruta.js"></script>
 </body>
 </html>
