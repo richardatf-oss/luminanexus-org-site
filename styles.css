@@ -740,6 +740,62 @@ main {
     max-height: 320px;
   }
 }
+/* Gate of the Day panel */
+
+.daily-gate-panel {
+  margin-top: 0.8rem;
+}
+
+.daily-gate-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.daily-gate-main {
+  max-width: 580px;
+}
+
+.daily-gate-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.daily-gate-hebrew {
+  font-size: 1.6rem;
+}
+
+.daily-gate-name {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.daily-gate-text {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
+
+.daily-gate-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 220px;
+}
+
+/* Mobile layout tweak */
+@media (max-width: 580px) {
+  .daily-gate-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
 
 @media (max-width: 580px) {
   .site-header {
