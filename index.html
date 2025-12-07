@@ -53,6 +53,31 @@
       </div>
     </section>
 
+    <!-- Gate of the Day -->
+    <section id="daily-gate" class="panel panel-soft daily-gate-panel">
+      <div class="panel-header">
+        <h2>Gate for Today</h2>
+        <span class="panel-tag subtle">From the 231 Gates</span>
+      </div>
+
+      <div class="daily-gate-body">
+        <div class="daily-gate-main">
+          <div class="daily-gate-title-line">
+            <span id="daily-gate-hebrew" class="daily-gate-hebrew">אב</span>
+            <span id="daily-gate-name" class="daily-gate-name">Gate אב — Alef–Bet</span>
+          </div>
+          <p id="daily-gate-text" class="daily-gate-text">
+            Beginning &amp; building: a quiet seed finding its first house in the world.
+          </p>
+        </div>
+
+        <div class="daily-gate-actions">
+          <a href="library/index.html" class="btn ghost">Explore in the Library</a>
+          <a href="chavruta/index.html" class="btn primary">Study with Chavruta</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Celestial Library preview -->
     <section id="library" class="panel panel-gradient">
       <div class="panel-header">
@@ -62,7 +87,7 @@
 
       <p>
         The Celestial Library is a growing collection of sefarim, letter meditations, and
-        interactive tools. At its heart is the **231 Gates** — the letter-pairs of the Hebrew
+        interactive tools. At its heart is the <strong>231 Gates</strong> — the letter-pairs of the Hebrew
         alef-bet, each a small doorway into qualities of soul and creation.
       </p>
 
@@ -163,5 +188,70 @@
       &copy; 2025 LuminaNexus.org. All rights reserved.
     </p>
   </footer>
+
+  <!-- Gate of the Day script -->
+  <script>
+    (function () {
+      var gates = [
+        {
+          id: "ab",
+          hebrew: "אב",
+          name: "Gate אב — Alef–Bet",
+          text: "Beginning & building: a quiet seed finding its first house in the world."
+        },
+        {
+          id: "ag",
+          hebrew: "אג",
+          name: "Gate אג — Alef–Gimel",
+          text: "Beginning & movement: the first step from stillness into a journey."
+        },
+        {
+          id: "ad",
+          hebrew: "אד",
+          name: "Gate אד — Alef–Dalet",
+          text: "Source & doorway: standing humbly in the threshold between knowing and not-knowing."
+        },
+        {
+          id: "ah",
+          hebrew: "אה",
+          name: "Gate אה — Alef–Hei",
+          text: "Breath & being: the soft exhale that reminds you simple existence is already a gift."
+        },
+        {
+          id: "al",
+          hebrew: "אל",
+          name: "Gate אל — Alef–Lamed",
+          text: "Source & learning: seeking wisdom that circles back into kindness and awe."
+        },
+        {
+          id: "am",
+          hebrew: "אם",
+          name: "Gate אם — Alef–Mem",
+          text: "Source & water: the hidden underground spring that quietly nourishes your life."
+        },
+        {
+          id: "an",
+          hebrew: "אנ",
+          name: "Gate אנ — Alef–Nun",
+          text: "Source in descent: even in falling, the story is still held by the One."
+        }
+      ];
+
+      var today = new Date();
+      var index =
+        (today.getFullYear() + today.getMonth() + today.getDate()) % gates.length;
+      var gate = gates[index];
+
+      var hebrewEl = document.getElementById("daily-gate-hebrew");
+      var nameEl = document.getElementById("daily-gate-name");
+      var textEl = document.getElementById("daily-gate-text");
+
+      if (gate && hebrewEl && nameEl && textEl) {
+        hebrewEl.textContent = gate.hebrew;
+        nameEl.textContent = gate.name;
+        textEl.textContent = gate.text;
+      }
+    })();
+  </script>
 </body>
 </html>
