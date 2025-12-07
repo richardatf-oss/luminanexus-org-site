@@ -7,7 +7,7 @@ const chatMode = document.getElementById("chat-mode");
 const chatSend = document.getElementById("chat-send");
 const chatStatus = document.getElementById("chat-status");
 
-let history = []; // we’ll send a short history to the function
+let history = []; // short chat history sent to backend
 
 function appendMessage(role, text) {
   const wrapper = document.createElement("div");
@@ -21,7 +21,6 @@ function appendMessage(role, text) {
   chatLog.appendChild(wrapper);
   chatLog.scrollTop = chatLog.scrollHeight;
 
-  // Track history sent to backend (user & assistant only)
   if (role === "user" || role === "assistant") {
     history.push({ role, content: text });
     if (history.length > 10) {
