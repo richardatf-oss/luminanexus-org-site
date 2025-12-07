@@ -68,6 +68,13 @@
             <span class="chat-status" id="chat-status">Ready</span>
           </div>
 
+          <div class="chat-options">
+            <label class="chat-tts-toggle">
+              <input type="checkbox" id="chat-speak" checked />
+              <span>Read chavruta replies aloud</span>
+            </label>
+          </div>
+
           <div id="chat-log" class="chat-log">
             <div class="chat-message system">
               <div class="chat-bubble">
@@ -95,9 +102,14 @@
                 </select>
               </label>
 
-              <button type="submit" class="btn primary" id="chat-send">
-                Ask chavruta
-              </button>
+              <div class="chat-buttons">
+                <button type="button" class="btn ghost mic-btn" id="chat-mic">
+                  🎙 Speak
+                </button>
+                <button type="submit" class="btn primary" id="chat-send">
+                  Ask chavruta
+                </button>
+              </div>
             </div>
 
             <p class="chat-disclaimer">
