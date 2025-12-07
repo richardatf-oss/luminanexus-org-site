@@ -1,7 +1,6 @@
 // chavruta/chavruta.js
-// Simple front-end client for the Chavruta Netlify function
-// with voice input + spoken replies and nicer pronunciation
-// for references like "Bereshit 1:1" → "Bereshit chapter 1 verse 1".
+// Front-end client for the Chavruta Netlify function
+// with voice input, spoken replies, and quick-start examples.
 
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
@@ -11,6 +10,7 @@ const chatSend = document.getElementById("chat-send");
 const chatStatus = document.getElementById("chat-status");
 const chatMic = document.getElementById("chat-mic");
 const chatSpeakToggle = document.getElementById("chat-speak");
+const exampleButtons = document.querySelectorAll(".example-btn");
 
 let history = []; // short chat history sent to backend
 
@@ -21,7 +21,6 @@ function prepareSpeechText(text) {
   if (typeof text !== "string") return text;
 
   // Generic pattern: number:number → "chapter X verse Y"
-  // e.g. "Bereshit 1:1" becomes "Bereshit chapter 1 verse 1"
   return text.replace(/\b(\d+):(\d+)\b/g, (_match, chap, verse) => {
     return `chapter ${chap} verse ${verse}`;
   });
@@ -150,6 +149,25 @@ function setupSpeech() {
 }
 
 setupSpeech();
+
+// ---- Quick-start example buttons ----
+
+if (exampleButtons.length) {
+  exampleButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const text = btn.getAttribute("data-text") || "";
+      const mode = btn.getAttribute("data-mode") || "text";
+
+      if (text) {
+        chatInput.value = text;
+        chatInput.focus();
+      }
+      if (mode && chatMode) {
+        chatMode.value = mode;
+      }
+    });
+  });
+}
 
 // ---- Form submit ----
 
