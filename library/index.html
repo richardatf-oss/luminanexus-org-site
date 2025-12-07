@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Celestial Library of 231 Gates — LuminaNexus.org</title>
+
+  <meta name="description"
+        content="Explore the Celestial Library of 231 Gates: a gentle doorway into Hebrew letter-pairs, qualities of soul, and simple practices for reflection." />
+
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Page-specific styling just for the Gates explorer -->
+  <style>
+    .library-main {
+      padding: 12vh 5vw 7vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .library-panel h2 {
+      margin-top: 0;
+    }
+
+    .library-tagline {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      margin-bottom: 1.1rem;
+    }
+
+    .gates-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+      gap: 2.2rem;
+      margin-top: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .gates-list-intro {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .gates-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .gate-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 0.35rem 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--accent-soft);
+    }
+
+    .gate-pill span.gate-hebrew {
+      font-size: 1.1rem;
+    }
+
+    .gate-pill span.gate-latin {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .gate-pill.active {
+      background: radial-gradient(circle at 30% 0%, #fffbe0, #ffb347);
+      color: #151018;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .gate-pill.active span.gate-latin {
+      color: #413000;
+    }
+
+    .gate-detail-card {
+      border-radius: 18px;
+      padding: 1.2rem 1.3rem 1.1rem;
+      background: rgba(6, 9, 21, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .gate-title-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.65rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-title-main {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .gate-title-hebrew {
+      font-size: 1.4rem;
+    }
+
+    .gate-qualities {
+      margin: 0.25rem 0 0.8rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .gate-qualities strong {
+      color: var(--accent-soft);
+    }
+
+    .gate-text {
+      font-size: 0.94rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 0.9rem;
+    }
+
+    .gate-section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .gate-practice,
+    .gate-question {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .gate-source {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .gates-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gate-detail-card {
+        margin-top: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="global-aura"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-main">LUMINA</span><span class="logo-emphasis">NEXUS</span>
+      <span class="logo-sub">לומינאנקסוס</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="../index.html#hero" class="nav-link">Home</a>
+      <a href="../chavruta/index.html" class="nav-link">Chavruta</a>
+      <a href="index.html" class="nav-link">Celestial Library</a>
+      <a href="../index.html#about" class="nav-link">About</a>
+      <a href="../index.html#support" class="nav-link nav-pill">Tzedakah</a>
+    </nav>
+  </header>
+
+  <main class="library-main">
+    <section class="panel library-panel">
+      <div class="panel-header">
+        <h2>The Celestial Library of 231 Gates</h2>
+        <span class="panel-tag">In preparation</span>
+      </div>
+
+      <p class="library-tagline">
+        The 231 Gates (שערים) are the letter-pairs of the Hebrew alef-bet: two letters meeting,
+        each combining its own flavor of creation. This Library is a gentle, symbolic way to sit
+        with those pairings — not as rigid doctrine, but as small windows for meditation,
+        journaling, and prayer.
+      </p>
+
+      <p>
+        For now, this page offers a small **231 Gates Explorer (beta)** with a handful of gates.
+        As the Library grows, more gates and sefarim will be added, along with audio meditations
+        and star-map views.
+      </p>
+
+      <section class="panel panel-soft" style="margin-top: 2rem;">
+        <div class="panel-header">
+          <h2>231 Gates Explorer (beta)</h2>
+        </div>
+
+        <div class="gates-layout">
+          <!-- LEFT: gate list -->
+          <div>
+            <h3 class="mini-heading">Choose a gate</h3>
+            <p class="gates-list-intro">
+              Each gate is a pair of letters. Click a gate to see a brief teaching and a small practice.
+              These are meditative hints, not fixed Kabbalah.
+            </p>
+
+            <div id="gates-list" class="gates-grid"></div>
+          </div>
+
+          <!-- RIGHT: gate detail -->
+          <div>
+            <h3 class="mini-heading">Gate details</h3>
+            <div id="gate-detail" class="gate-detail-card">
+              <!-- Filled by JavaScript below -->
+              <p class="gate-text">
+                Choose a gate on the left to begin. Start with just one slow breath, noticing the
+                shapes and sounds of the letters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-title">Luminanexus.org</span>
+        <span class="footer-subtitle">A small light in honor of the Infinite Light.</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#hero">Top</a>
+        <a href="index.html">Celestial Library</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#support">Tzedakah</a>
+      </div>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2025 LuminaNexus.org. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Small script to wire up the Gates Explorer -->
+  <script>
+    const gates = [
+      {
+        id: "ab",
+        hebrew: "אב",
+        latin: "Alef–Bet",
+        title: "Gate אב — Alef–Bet",
+        qualities: ["beginning & building", "seed & house"],
+        teaching:
+          "Alef is the quiet beginning, the breath before speech. Bet is the house, the first shape that can receive and hold. Together, this gate hints at the movement from pure potential into a sheltered place in the world. It can be a reminder that every new beginning needs a container: a schedule, a habit, a room, a friendship.",
+        practice:
+          "Gently picture a small house of light. With each in-breath, Alef, imagine simple being. With each out-breath, Bet, imagine that being taking form inside a safe space.",
+        question:
+          "Where in your life is there a new beginning that needs a simple, real-world container so it can grow?",
+        source:
+          "Inspired by Sefer Yetzirah’s teaching that Bet begins the word Bereshit — the house of beginnings."
+      },
+      {
+        id: "ag",
+        hebrew: "אג",
+        latin: "Alef–Gimel",
+        title: "Gate אג — Alef–Gimel",
+        qualities: ["beginning & movement", "silent source & journey"],
+        teaching:
+          "Gimel is often pictured as a leg in motion, a letter that walks or runs. Joined with Alef, the hidden source, this gate can point to the first movement from stillness into the road of life. It can be a reminder that every journey begins in a quiet decision of heart, long before our feet actually move.",
+        practice:
+          "Imagine standing still (Alef), then taking one gentle step forward (Gimel). Let one small, realistic step toward something holy or healing come to mind.",
+        question:
+          "What is one next step — small and kind — that would move you in the direction your heart already knows?",
+        source:
+          "Draws on the common image of Gimel as a walking figure in traditional letter meditations."
+      },
+      {
+        id: "ad",
+        hebrew: "אד",
+        latin: "Alef–Dalet",
+        title: "Gate אד — Alef–Dalet",
+        qualities: ["source & doorway", "humility & access"],
+        teaching:
+          "Dalet is a doorway, but also a hint of dalut — poverty or humility. Joined with Alef, the Infinite, the gate can whisper that true openings are often found when we recognize our limits. Standing in the doorway between what we know and what we do not know is itself a holy place.",
+        practice:
+          "Visualize a simple doorway in soft light. On one side stands what you already understand; on the other is mystery. Breathe and allow yourself to stand in the threshold without rushing.",
+        question:
+          "Is there an area of your life or learning where you feel poor in understanding, and can you bless that doorway instead of fearing it?",
+        source:
+          "Echoes teachings that Dalet hints at the humble recipient who opens to receive from Alef."
+      },
+      {
+        id: "ah",
+        hebrew: "אה",
+        latin: "Alef–Hei",
+        title: "Gate אה — Alef–Hei",
+        qualities: ["breath & being", "name & presence"],
+        teaching:
+          "Hei is breath made visible — a soft exhalation that shapes the Divine Name. Joined with Alef, this gate can be felt as the breath of existence itself, the gentle awareness that we are continually being spoken into being.",
+        practice:
+          "Place a hand lightly on your chest. On each out-breath, whisper a soft 'h' sound, noticing that even your ordinary breathing can be a form of praise.",
+        question:
+          "When during your day do you most easily remember that simply existing, breathing, is already a gift?",
+        source:
+          "Inspired by the role of Hei in the four-letter Name and classic meditations on breath and awareness."
+      },
+      {
+        id: "al",
+        hebrew: "אל",
+        latin: "Alef–Lamed",
+        title: "Gate אל — Alef–Lamed",
+        qualities: ["source & learning", "gentle guidance"],
+        teaching:
+          "Lamed reaches upward like a small tower among the letters, often linked to learning and guidance. With Alef, it can suggest a path of study that stays rooted in the One. This gate can whisper: let your seeking for knowledge always circle back toward kindness and awe, not pride.",
+        practice:
+          "Imagine a narrow tower of light, Lamed, drawing wisdom down from a hidden Alef above it. As you breathe, let a simple request arise: 'Teach me something today that will make me more gentle.'",
+        question:
+          "In your current learning, is there a place where remembering humility and kindness would change how you approach it?",
+        source:
+          "Connects the shape of Lamed and its link to limud (learning) with the quiet unity of Alef."
+      },
+      {
+        id: "am",
+        hebrew: "אם",
+        latin: "Alef–Mem",
+        title: "Gate אם — Alef–Mem",
+        qualities: ["source & water", "hidden root & flowing life"],
+        teaching:
+          "Mem is water — mayim — and often stands for the flowing, enclosing, nurturing aspect of creation. With Alef, it can point to the hidden well beneath all things, the deep current beneath the surface of a life.",
+        practice:
+          "Gently picture a spring of clear water rising up from a hidden underground source. With each breath, let that image cool and soften any tight place inside.",
+        question:
+          "Where do you sense a quiet underground current of goodness in your life, even if the surface feels restless?",
+        source:
+          "Resonates with Sefer Yetzirah’s linking of Mem to water and to the nourishing depths of creation."
+      },
+      {
+        id: "an",
+        hebrew: "אנ",
+        latin: "Alef–Nun",
+        title: "Gate אנ — Alef–Nun",
+        qualities: ["source & falling/rising", "hidden support in descent"],
+        teaching:
+          "Nun often hints at falling and rising — the letter that bows low but also returns. With Alef, this gate can suggest that even in descent there is a hidden support. Falling is not the end of the story; the script still belongs to the One.",
+        practice:
+          "Remember a time when you stumbled but did not stay down forever. Breathe and allow a small thank-you to form, even if the story is not yet finished.",
+        question:
+          "Is there a place right now where you feel like you are 'falling'? What would it mean to trust that Alef is still present there?",
+        source:
+          "Touches on traditional associations of Nun with nefilah (falling) and the hope of rising again."
+      }
+    ];
+
+    const gatesListEl = document.getElementById("gates-list");
+    const gateDetailEl = document.getElementById("gate-detail");
+
+    function renderGateDetail(gate) {
+      if (!gate) return;
+
+      gateDetailEl.innerHTML = `
+        <div class="gate-title-line">
+          <span class="gate-title-hebrew">${gate.hebrew}</span>
+          <span class="gate-title-main">${gate.title}</span>
+        </div>
+        <p class="gate-qualities">
+          <strong>Qualities:</strong> ${gate.qualities.join(", ")}
+        </p>
+        <p class="gate-text">${gate.teaching}</p>
+        <div class="gate-section-label">Small practice</div>
+        <p class="gate-practice">${gate.practice}</p>
+        <div class="gate-section-label">Question for reflection</div>
+        <p class="gate-question">${gate.question}</p>
+        <p class="gate-source">${gate.source}</p>
+      `;
+    }
+
+    function renderGateList() {
+      gatesListEl.innerHTML = "";
+      gates.forEach((gate, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "gate-pill";
+        btn.dataset.gateId = gate.id;
+        if (index === 0) btn.classList.add("active");
+
+        btn.innerHTML = `
+          <span class="gate-hebrew">${gate.hebrew}</span>
+          <span class="gate-latin">${gate.latin}</span>
+        `;
+
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".gate-pill.active")
+            .forEach(el => el.classList.remove("active"));
+          btn.classList.add("active");
+          renderGateDetail(gate);
+        });
+
+        gatesListEl.appendChild(btn);
+      });
+
+      // Show first gate by default
+      if (gates[0]) {
+        renderGateDetail(gates[0]);
+      }
+    }
+
+    renderGateList();
+  </script>
+</body>
+</html>
