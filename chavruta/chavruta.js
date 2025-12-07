@@ -6,8 +6,12 @@ const chatLog = document.getElementById("chat-log");
 const chatMode = document.getElementById("chat-mode");
 const chatSend = document.getElementById("chat-send");
 const chatStatus = document.getElementById("chat-status");
+const chatMic = document.getElementById("chat-mic");
+const chatSpeakToggle = document.getElementById("chat-speak");
 
 let history = []; // short chat history sent to backend
+
+const canSpeak = typeof window !== "undefined" && "speechSynthesis" in window;
 
 function appendMessage(role, text) {
   const wrapper = document.createElement("div");
@@ -21,25 +25,118 @@ function appendMessage(role, text) {
   chatLog.appendChild(wrapper);
   chatLog.scrollTop = chatLog.scrollHeight;
 
+  // Track history for backend
   if (role === "user" || role === "assistant") {
     history.push({ role, content: text });
     if (history.length > 10) {
       history = history.slice(-10);
     }
   }
+
+  // Optional: speak assistant replies aloud
+  if (
+    role === "assistant" &&
+    canSpeak &&
+    chatSpeakToggle &&
+    chatSpeakToggle.checked
+  ) {
+    try {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    } catch (err) {
+      console.error("Speech synthesis error:", err);
+    }
+  }
 }
 
-function setLoading(isLoading) {
+let micSupported = false;
+let recognition = null;
+let listening = false;
+
+function setLoading(isLoading, statusText) {
   if (isLoading) {
     chatSend.disabled = true;
     chatInput.disabled = true;
-    chatStatus.textContent = "Listening…";
+    if (chatMic) chatMic.disabled = true;
+    chatStatus.textContent = statusText || "Listening…";
   } else {
     chatSend.disabled = false;
     chatInput.disabled = false;
+    if (chatMic && micSupported) chatMic.disabled = false;
     chatStatus.textContent = "Ready";
   }
 }
+
+// ---- Speech recognition (mic) ----
+
+function setupSpeech() {
+  if (typeof window === "undefined") return;
+
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition || !chatMic) {
+    if (chatMic) {
+      chatMic.disabled = true;
+      chatMic.title = "Voice input not supported in this browser.";
+    }
+    return;
+  }
+
+  micSupported = true;
+  recognition = new SpeechRecognition();
+  recognition.lang = "en-US"; // can be adjusted later
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  chatMic.addEventListener("click", () => {
+    if (!listening) {
+      listening = true;
+      chatStatus.textContent = "Listening (mic)…";
+      chatMic.textContent = "⏹ Stop";
+      recognition.start();
+    } else {
+      listening = false;
+      chatMic.textContent = "🎙 Speak";
+      chatStatus.textContent = "Ready";
+      recognition.stop();
+    }
+  });
+
+  recognition.onresult = (event) => {
+    listening = false;
+    chatMic.textContent = "🎙 Speak";
+    chatStatus.textContent = "Ready";
+
+    const transcript = event.results[0][0].transcript;
+    // append to textarea so user can edit before sending
+    chatInput.value = (chatInput.value ? chatInput.value + " " : "") + transcript;
+    chatInput.focus();
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Speech recognition error:", event.error);
+    listening = false;
+    chatMic.textContent = "🎙 Speak";
+    chatStatus.textContent = "Ready";
+  };
+
+  recognition.onend = () => {
+    if (listening) {
+      recognition.start();
+    } else {
+      chatMic.textContent = "🎙 Speak";
+      chatStatus.textContent = "Ready";
+    }
+  };
+}
+
+setupSpeech();
+
+// ---- Form submit ----
 
 chatForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -48,7 +145,7 @@ chatForm.addEventListener("submit", async (event) => {
 
   appendMessage("user", message);
   chatInput.value = "";
-  setLoading(true);
+  setLoading(true, "Asking chavruta…");
 
   try {
     const response = await fetch("/.netlify/functions/chavruta", {
