@@ -1,4 +1,7 @@
+// chavruta/chavruta.js
 // Simple front-end client for the Chavruta Netlify function
+// with voice input + spoken replies and nicer pronunciation
+// for references like "Bereshit 1:1" → "Bereshit chapter 1 verse 1".
 
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
@@ -12,6 +15,17 @@ const chatSpeakToggle = document.getElementById("chat-speak");
 let history = []; // short chat history sent to backend
 
 const canSpeak = typeof window !== "undefined" && "speechSynthesis" in window;
+
+// Convert references like "1:1" to "chapter 1 verse 1" for speech
+function prepareSpeechText(text) {
+  if (typeof text !== "string") return text;
+
+  // Generic pattern: number:number → "chapter X verse Y"
+  // e.g. "Bereshit 1:1" becomes "Bereshit chapter 1 verse 1"
+  return text.replace(/\b(\d+):(\d+)\b/g, (_match, chap, verse) => {
+    return `chapter ${chap} verse ${verse}`;
+  });
+}
 
 function appendMessage(role, text) {
   const wrapper = document.createElement("div");
@@ -41,8 +55,9 @@ function appendMessage(role, text) {
     chatSpeakToggle.checked
   ) {
     try {
+      const spokenText = prepareSpeechText(text);
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
+      const utterance = new SpeechSynthesisUtterance(spokenText);
       utterance.rate = 1.0;
       utterance.pitch = 1.0;
       window.speechSynthesis.speak(utterance);
