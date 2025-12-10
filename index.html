@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Fonts -->
+  <!-- Optional fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   <script defer src="script.js"></script>
 </head>
 <body id="top">
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#top" class="brand">
@@ -32,7 +33,6 @@
 
       <nav class="site-nav">
         <a href="#mission">Mission</a>
-        <a href="#pillars">Pillars</a>
         <a href="#projects">Projects</a>
         <a href="/library/">Library</a>
         <a href="/chavruta/">Chavruta</a>
@@ -45,15 +45,10 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container hero-inner">
         <div class="hero-text">
           <p class="eyebrow">A nonprofit in formation</p>
-          <h1>
-            Weaving Torah, creativity,
-            and technology
-            into a single field
-            of light.
-          </h1>
+          <h1>Weaving Torah, creativity, and technology into a single field of light.</h1>
           <p class="hero-subtitle">
             LuminaNexus.org is a small nonprofit with a big kavanah:
             to build tools, stories, and sanctuaries that help people
@@ -63,19 +58,14 @@
             <a href="#get-involved" class="btn primary">Get involved</a>
             <a href="#projects" class="btn ghost">Explore projects</a>
           </div>
-          <div class="hero-meta">
-            <span>Rooted in Kingman, AZ</span>
-            <span aria-hidden="true">•</span>
-            <span>Facing Jerusalem</span>
-          </div>
+          <p class="hero-meta">
+            Rooted in Kingman, AZ · Facing Jerusalem
+          </p>
         </div>
 
         <div class="hero-orbit">
           <div class="orbit">
             <div class="orbit-core">א</div>
-            <div class="orbit-ring orbit-ring-1"></div>
-            <div class="orbit-ring orbit-ring-2"></div>
-            <div class="orbit-ring orbit-ring-3"></div>
           </div>
           <p class="orbit-caption">
             The Quantum Etz Chaim at the center, with each project as an orbiting light.
@@ -107,54 +97,16 @@
           <article class="card">
             <h3>Build new vessels</h3>
             <p>
-              Design apps, stories, and experiences that let people
-              encounter holiness through beauty, play, and curiosity.
+              Design apps, stories, and experiences that let people encounter
+              holiness through beauty, play, and curiosity.
             </p>
           </article>
 
           <article class="card">
             <h3>Heal through connection</h3>
             <p>
-              Use technology as a nexus—linking people, projects,
-              and places into one field of mutual support and repair.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PILLARS -->
-    <section id="pillars" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Three pillars of LuminaNexus</h2>
-          <p>
-            Every project lives at the intersection of learning, imagination, and accessible tools.
-          </p>
-        </div>
-
-        <div class="pillars-grid">
-          <article class="pillar">
-            <h3>Sacred learning</h3>
-            <p>
-              Rooted in Tanakh, Midrash, Kabbalah, and the voices of
-              teachers across generations, presented with care and reverence.
-            </p>
-          </article>
-
-          <article class="pillar">
-            <h3>Creative worlds</h3>
-            <p>
-              Novels, sigils, visual art, music, and interactive stories
-              that invite people to step inside living metaphors.
-            </p>
-          </article>
-
-          <article class="pillar">
-            <h3>Accessible technology</h3>
-            <p>
-              Websites, apps, and tools that are simple to use, welcoming,
-              and designed for real people—not just experts.
+              Use technology as a nexus—linking people, projects, and places
+              into one field of mutual support and repair.
             </p>
           </article>
         </div>
@@ -162,81 +114,58 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section">
+    <section id="projects" class="section section-alt">
       <div class="container">
         <div class="section-header">
           <h2>Current & emerging projects</h2>
           <p>
             A glimpse of the constellation of work orbiting the Quantum Etz Chaim.
-            Some projects are live, some are in active development.
+            Some projects are live, some in active development.
           </p>
         </div>
 
         <div class="projects-grid">
-          <article class="project">
+          <article class="card project">
             <h3>The Celestial Library of the 231 Gates</h3>
             <p>
-              A long-form project exploring the Quantum Etz Chaim and
-              the 231 Gates as living pathways of consciousness, story,
-              and field-theory-meets-Kabbalah.
+              A long-form exploration of the Quantum Etz Chaim and
+              the 231 Gates as living pathways of consciousness and field-theory-meets-Kabbalah.
             </p>
             <p class="project-meta">Status: In development</p>
           </article>
 
-          <article class="project">
+          <article class="card project">
             <h3>Ivrit HaOr</h3>
             <p>
-              A sacred Hebrew learning experience integrating Biblical and
-              modern Hebrew, gematria, Kabbalah, and the hidden letter
-              אלף עולם, with audio, art, and meditation.
+              A sacred Hebrew learning experience integrating Biblical and modern Hebrew,
+              gematria, Kabbalah, and the hidden letter אלף עולם, with audio, art, and meditation.
             </p>
             <p class="project-meta">Status: Prototype phase</p>
           </article>
 
-          <article class="project">
+          <article class="card project">
             <h3>ChavrutaGPT</h3>
             <p>
-              An AI-assisted chavruta companion to help learners ask better
-              questions, explore sources, and stay rooted in tradition while
-              using modern tools.
+              An AI-assisted chavruta companion to help learners explore sources and
+              ask better questions while staying rooted in tradition.
             </p>
-            <p class="project-meta">Status: R&D</p>
+            <p class="project-meta">Status: R&amp;D</p>
           </article>
 
-          <article class="project">
+          <article class="card project">
             <h3>Rider of the Forgotten Star</h3>
             <p>
-              A Western-planetary romance series inspired by classic
-              pulp adventure, dedicated to family, faith, and the
-              quiet heroism of the human heart.
+              A Western-planetary romance series inspired by classic pulp adventure,
+              dedicated to family, faith, and quiet heroism.
             </p>
-            <p class="project-meta">Status: Manuscript series in progress</p>
-          </article>
-
-          <article class="project">
-            <h3>Mountain-to-Melody</h3>
-            <p>
-              A creative tool that turns mountain silhouettes into waveforms
-              and music, letting landscapes become living scores.
-            </p>
-            <p class="project-meta">Status: Concept & early prototype</p>
-          </article>
-
-          <article class="project">
-            <h3>CryptoPulse (exploratory)</h3>
-            <p>
-              A responsible, research-oriented exploration of how
-              transparent tools might help people navigate complex
-              financial systems with more clarity and caution.
-            </p>
-            <p class="project-meta">Status: Exploratory research</p>
+            <p class="project-meta">Status: Manuscript in progress</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- GET INVOLVED -->
-    <section id="get-involved" class="section section-alt">
+    <section id="get-involved" class="section">
       <div class="container">
         <div class="section-header">
           <h2>How you can help</h2>
@@ -279,7 +208,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-alt">
       <div class="container">
         <div class="section-header">
           <h2>Contact</h2>
@@ -289,7 +218,6 @@
           </p>
         </div>
 
-        <!-- Netlify-ready contact form -->
         <form
           name="contact"
           method="POST"
