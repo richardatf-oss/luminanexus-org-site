@@ -7,7 +7,6 @@
 
   <link rel="stylesheet" href="/styles.css" />
 
-  <!-- Same fonts as the rest of the site -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -135,5 +134,21 @@
       </p>
     </div>
   </footer>
+
+  <!-- Sefaria Linker -->
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://www.sefaria.org/linker.v3.js"
+  ></script>
+  <script>
+    if (window.sefaria && typeof sefaria.link === "function") {
+      sefaria.link({
+        mode: "popup-click",
+        contentLang: "bilingual",
+        interfaceLang: "english"
+      });
+    }
+  </script>
 </body>
 </html>
