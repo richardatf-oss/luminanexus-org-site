@@ -303,6 +303,32 @@ img {
   margin: 0;
   color: #9ca3af;
 }
+/* Breadcrumbs */
+
+.crumbs-wrap {
+  padding-top: 1rem;
+}
+
+.crumbs {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.crumbs a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.crumbs a:hover {
+  text-decoration: underline;
+}
+
+.crumbs span {
+  opacity: 0.75;
+}
 
 /* Contact */
 
