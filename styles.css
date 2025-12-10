@@ -607,6 +607,19 @@ textarea {
 /* ============================
    ChavrutaGPT chat styling
    ============================ */
+/* Widen the hero on large screens so it doesn't hug the right side */
+.hero .container {
+  max-width: none;           /* let it take the full viewport width */
+  padding-inline: 3.5rem;    /* nice breathing room on left/right */
+}
+
+/* On smaller screens, fall back to the normal container width */
+@media (max-width: 1200px) {
+  .hero .container {
+    max-width: var(--max-width);
+    padding-inline: 1.5rem;
+  }
+}
 
 .chavruta-layout {
   display: grid;
