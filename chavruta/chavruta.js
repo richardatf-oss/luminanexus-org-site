@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusEl = document.getElementById("chat-status");
 
   if (!form || !input || !log) {
-    console.warn("Chavruta chat elements not found on this page.");
+    console.warn("Chavruta chat elements not found.");
     return;
   }
 
-  // Conversation history we send to the Netlify function
+  // Simple in-memory history for this page load
   const history = [];
 
   function appendMessage(role, content) {
@@ -24,69 +24,59 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(bubble);
     log.appendChild(wrapper);
 
-    // Track in history for context
     history.push({ role, content });
-
-    // Scroll to bottom
     log.scrollTop = log.scrollHeight;
   }
 
   async function sendToChavruta(message) {
-    // Show UI as “thinking”
+    // UI: show "thinking"
+    statusEl.textContent = "Thinking…";
     input.disabled = true;
     form.querySelector("button[type='submit']").disabled = true;
-    if (statusEl) statusEl.textContent = "Thinking…";
 
     try {
-      const response = await fetch("/.netlify/functions/chavruta", {
+      const res = await fetch("/.netlify/functions/chavruta", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message,
           history,
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
       }
 
-      const data = await response.json();
-
+      const data = await res.json();
       const reply =
         data.reply ||
         data.answer ||
         data.message ||
-        data.text ||
         "I couldn’t understand the response from the chavruta function.";
 
       appendMessage("assistant", reply);
-    } catch (error) {
-      console.error("Chavruta function error:", error);
+    } catch (err) {
+      console.error(err);
       appendMessage(
         "assistant",
         "There was a problem reaching the chavruta function. Please try again in a moment."
       );
     } finally {
+      statusEl.textContent = "";
       input.disabled = false;
       form.querySelector("button[type='submit']").disabled = false;
-      if (statusEl) statusEl.textContent = "";
       input.focus();
     }
   }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
     const message = input.value.trim();
     if (!message) return;
 
     appendMessage("user", message);
     input.value = "";
-
-    // Send to Netlify function
     sendToChavruta(message);
   });
 
@@ -94,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.addEventListener("click", () => {
       log.innerHTML = "";
       history.length = 0;
-
       appendMessage(
         "assistant",
         "Chat cleared. What would you like to explore next?"
