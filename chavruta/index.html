@@ -7,7 +7,6 @@
 
   <link rel="stylesheet" href="/styles.css" />
 
-  <!-- Fonts (same as home) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,7 +47,7 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <p class="eyebrow">Experiment in Torah & AI</p>
+          <p class="eyebrow">Experiment in Torah &amp; AI</p>
           <h1>ChavrutaGPT: a small AI learning partner.</h1>
           <p class="hero-subtitle">
             ChavrutaGPT is an experimental tool from LuminaNexus.org.
@@ -105,7 +104,7 @@
                   id="chat-input"
                   name="message"
                   rows="3"
-                  placeholder="For example: “Help me with Bereishit 1,” “Compare Rashi and Ramban on…,” or “Explain tzimtzum using modern physics.”"
+                  placeholder="For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on…,” or “Explain tzimtzum using modern physics.”"
                   required
                 ></textarea>
               </label>
@@ -131,7 +130,7 @@
             </article>
 
             <article class="card">
-              <h3>Limits & boundaries</h3>
+              <h3>Limits &amp; boundaries</h3>
               <ul class="chat-list">
                 <li>No real psak halacha.</li>
                 <li>May make mistakes or oversimplify sources.</li>
@@ -154,5 +153,21 @@
       </p>
     </div>
   </footer>
+
+  <!-- Sefaria Linker -->
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://www.sefaria.org/linker.v3.js"
+  ></script>
+  <script>
+    if (window.sefaria && typeof sefaria.link === "function") {
+      sefaria.link({
+        mode: "popup-click",
+        contentLang: "bilingual",
+        interfaceLang: "english"
+      });
+    }
+  </script>
 </body>
 </html>
