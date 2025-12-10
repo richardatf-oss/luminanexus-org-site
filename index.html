@@ -3,255 +3,348 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LuminaNexus.org — Quantum Etz Chaim & Noahide Learning</title>
-
-  <meta name="description"
-        content="LuminaNexus.org is a gentle digital sanctuary for chavruta study, Torah-rooted exploration, and luminous questions at the edge of science and spirit." />
+  <title>LuminaNexus | Light, Learning & Creation</title>
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script defer src="script.js"></script>
 </head>
-<body>
-  <div class="global-aura"></div>
-
-  <!-- Header / Navigation -->
+<body id="top">
   <header class="site-header">
-    <div class="logo">
-      <span class="logo-main">LUMINA</span><span class="logo-emphasis">NEXUS</span>
-      <span class="logo-sub">לומינאנקסוס</span>
-    </div>
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">LN</span>
+        <span class="brand-text">
+          <span class="brand-name">LuminaNexus</span>
+          <span class="brand-tagline">Light-linked learning</span>
+        </span>
+      </a>
 
-    <nav class="nav-links">
-      <a href="#hero" class="nav-link">Home</a>
-      <a href="chavruta/index.html" class="nav-link">Chavruta</a>
-      <a href="library/index.html" class="nav-link">Celestial Library</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#support" class="nav-link nav-pill">Tzedakah</a>
-    </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav">
+        <a href="#mission">Mission</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#projects">Projects</a>
+        <a href="#get-involved">Get involved</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section id="hero" class="hero">
-      <div class="hero-orbit"></div>
-      <div class="hero-content">
-        <div class="hero-kicker">A quiet place for luminous learning</div>
-        <h1>Quantum Etz Chaim &amp; Noahide Learning</h1>
-        <p class="hero-text">
-          A gentle digital sanctuary for chavruta study, Torah-rooted exploration, and questions
-          that shimmer at the edge of science and spirit.
-        </p>
-
-        <div class="hero-actions">
-          <a href="chavruta/index.html" class="btn primary">Enter Chavruta</a>
-          <a href="library/index.html" class="btn ghost">Browse the Library</a>
-        </div>
-
-        <div class="hero-scroll-hint">
-          <div class="hero-scroll-dot"></div>
-          <span>Scroll to explore the gates</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gate of the Day -->
-    <section id="daily-gate" class="panel panel-soft daily-gate-panel">
-      <div class="panel-header">
-        <h2>Gate for Today</h2>
-        <span class="panel-tag subtle">From the 231 Gates</span>
-      </div>
-
-      <div class="daily-gate-body">
-        <div class="daily-gate-main">
-          <div class="daily-gate-title-line">
-            <span id="daily-gate-hebrew" class="daily-gate-hebrew">אב</span>
-            <span id="daily-gate-name" class="daily-gate-name">Gate אב — Alef–Bet</span>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">A nonprofit in formation</p>
+          <h1>
+            Weaving Torah, creativity, and technology
+            into a single field of light.
+          </h1>
+          <p class="hero-subtitle">
+            LuminaNexus.org is a small nonprofit with a big kavanah:
+            to build tools, stories, and sanctuaries that help people
+            remember that reality is alive, connected, and full of meaning.
+          </p>
+          <div class="hero-actions">
+            <a href="#get-involved" class="btn primary">Get involved</a>
+            <a href="#projects" class="btn ghost">Explore projects</a>
           </div>
-          <p id="daily-gate-text" class="daily-gate-text">
-            Beginning &amp; building: a quiet seed finding its first house in the world.
+          <div class="hero-meta">
+            <span>Rooted in Kingman, AZ</span>
+            <span aria-hidden="true">•</span>
+            <span>Facing Jerusalem</span>
+          </div>
+        </div>
+
+        <div class="hero-orbit">
+          <div class="orbit">
+            <div class="orbit-core">א</div>
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <div class="orbit-ring orbit-ring-3"></div>
+          </div>
+          <p class="orbit-caption">
+            The Quantum Etz Chaim at the center, with each project as an orbiting light.
           </p>
         </div>
-
-        <div class="daily-gate-actions">
-          <a href="library/index.html" class="btn ghost">Explore in the Library</a>
-          <a href="chavruta/index.html" class="btn primary">Study with Chavruta</a>
-        </div>
       </div>
     </section>
 
-    <!-- Celestial Library preview -->
-    <section id="library" class="panel panel-gradient">
-      <div class="panel-header">
-        <h2>The Celestial Library of 231 Gates</h2>
-        <span class="panel-tag">In preparation</span>
-      </div>
-
-      <p>
-        The Celestial Library is a growing collection of sefarim, letter meditations, and
-        interactive tools. At its heart is the <strong>231 Gates</strong> — the letter-pairs of the Hebrew
-        alef-bet, each a small doorway into qualities of soul and creation.
-      </p>
-
-      <p>
-        The first room of the Library is now open: a <strong>231 Gates Explorer (beta)</strong>,
-        where you can select a gate, read a short teaching, and sit with a simple practice or
-        journaling question. More gates, audio meditations, and star-map views will be added over
-        time, be’ezrat HaShem.
-      </p>
-
-      <div class="pill-row">
-        <a href="library/index.html" class="btn primary">Open the 231 Gates Explorer</a>
-        <a href="chavruta/index.html" class="btn ghost">Study a gate with Chavruta</a>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="panel panel-soft">
-      <div class="panel-header">
-        <h2>About LuminaNexus</h2>
-        <span class="panel-tag subtle">For Noahides and all seekers</span>
-      </div>
-
-      <div class="two-column">
-        <div>
+    <!-- MISSION -->
+    <section id="mission" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our mission</h2>
           <p>
-            LuminaNexus.org is devoted to heartfelt learning for Noahides and all who seek HaShem.
-            It weaves together Etz Chaim, Kabbalah, physics, and story into one long conversation
-            with the Holy One, blessed be He.
-          </p>
-
-          <p>
-            This site is not a yeshiva, not a replacement for human teachers, and not a place for
-            halachic rulings. It is a quiet hallway: a place to linger with texts, metaphors, and
-            questions, and to prepare better, deeper questions for your rabbanim, mentors, and
-            trusted guides.
+            To create bridges between sacred text, modern tools, and human hearts—
+            so that learning feels like standing under a living Tree of Light.
           </p>
         </div>
 
-        <div>
-          <h3 class="mini-heading">What lives here</h3>
-          <ul class="soft-list">
-            <li>AI chavruta conversations rooted in Torah and classic sources.</li>
-            <li>Explorations of the 231 Gates and the Tree of Life.</li>
-            <li>Gentle bridges between science, mathematics, and emunah.</li>
-            <li>Space for Noahide learning with kavod for halachic boundaries.</li>
-          </ul>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Guard the light</h3>
+            <p>
+              Preserve and share Torah-rooted wisdom in ways that honor
+              tradition while speaking in a modern voice.
+            </p>
+          </article>
 
-          <p class="quote" style="margin-top: 0.9rem;">
-            “A small light in honor of the Infinite Light, offered with gratitude and awe.”
-          </p>
+          <article class="card">
+            <h3>Build new vessels</h3>
+            <p>
+              Design apps, stories, and experiences that let people
+              encounter holiness through beauty, play, and curiosity.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Heal through connection</h3>
+            <p>
+              Use technology as a nexus—linking people, projects,
+              and places into one field of mutual support and repair.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Tzedakah / Support -->
-    <section id="support" class="panel">
-      <div class="panel-header">
-        <h2>Tzedakah &amp; Support</h2>
-        <span class="panel-tag subtle">Quiet generosity</span>
+    <!-- PILLARS -->
+    <section id="pillars" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Three pillars of LuminaNexus</h2>
+          <p>
+            Every project lives at the intersection of learning, imagination, and accessible tools.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="pillar">
+            <h3>Sacred learning</h3>
+            <p>
+              Rooted in Tanakh, Midrash, Kabbalah, and the voices of
+              teachers across generations, presented with care and reverence.
+            </p>
+          </article>
+
+          <article class="pillar">
+            <h3>Creative worlds</h3>
+            <p>
+              Novels, sigils, visual art, music, and interactive stories
+              that invite people to step inside living metaphors.
+            </p>
+          </article>
+
+          <article class="pillar">
+            <h3>Accessible technology</h3>
+            <p>
+              Websites, apps, and tools that are simple to use, welcoming,
+              and designed for real people—not just experts.
+            </p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <p>
-        LuminaNexus.org is a labor of love, built as an offering to HaKadosh Baruch Hu and as a
-        support for sincere seekers. There is no paywall, and there are no required donations.
-      </p>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Current & emerging projects</h2>
+          <p>
+            A glimpse of the constellation of work orbiting the Quantum Etz Chaim.
+            Some projects are live, some are in active development.
+          </p>
+        </div>
 
-      <p>
-        If this space helps you, the most important “support” is to deepen your own mitzvot,
-        kindness, and learning — and to strengthen the communities, rabbis, and institutions that
-        nourish your soul.
-      </p>
+        <div class="projects-grid">
+          <article class="project">
+            <h3>The Celestial Library of the 231 Gates</h3>
+            <p>
+              A long-form project exploring the Quantum Etz Chaim and
+              the 231 Gates as living pathways of consciousness, story,
+              and field-theory-meets-Kabbalah.
+            </p>
+            <p class="project-meta">Status: In development</p>
+          </article>
 
-      <p class="support-note">
-        When formal tzedakah channels connected to this project are appropriate and ready, they
-        will be shared here in a way that honors both halachah and transparency.
-      </p>
+          <article class="project">
+            <h3>Ivrit HaOr</h3>
+            <p>
+              A sacred Hebrew learning experience integrating Biblical and
+              modern Hebrew, gematria, Kabbalah, and the hidden letter
+              אלף עולם, with audio, art, and meditation.
+            </p>
+            <p class="project-meta">Status: Prototype phase</p>
+          </article>
+
+          <article class="project">
+            <h3>ChavrutaGPT</h3>
+            <p>
+              An AI-assisted chavruta companion to help learners ask better
+              questions, explore sources, and stay rooted in tradition while
+              using modern tools.
+            </p>
+            <p class="project-meta">Status: R&D</p>
+          </article>
+
+          <article class="project">
+            <h3>Rider of the Forgotten Star</h3>
+            <p>
+              A Western-planetary romance series inspired by classic
+              pulp adventure, dedicated to family, faith, and the
+              quiet heroism of the human heart.
+            </p>
+            <p class="project-meta">Status: Manuscript series in progress</p>
+          </article>
+
+          <article class="project">
+            <h3>Mountain-to-Melody</h3>
+            <p>
+              A creative tool that turns mountain silhouettes into waveforms
+              and music, letting landscapes become living scores.
+            </p>
+            <p class="project-meta">Status: Concept & early prototype</p>
+          </article>
+
+          <article class="project">
+            <h3>CryptoPulse (exploratory)</h3>
+            <p>
+              A responsible, research-oriented exploration of how
+              transparent tools might help people navigate complex
+              financial systems with more clarity and caution.
+            </p>
+            <p class="project-meta">Status: Exploratory research</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET INVOLVED -->
+    <section id="get-involved" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>How you can help</h2>
+          <p>
+            LuminaNexus is small, intentional, and relational. We grow
+            through real people offering what they love to do.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Support financially</h3>
+            <p>
+              Help cover hosting, development, art, and accessibility costs
+              so we can keep creating and sharing freely.
+            </p>
+            <p class="card-note">
+              A formal donation pipeline will be added once nonprofit
+              registration is finalized.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Offer your skills</h3>
+            <p>
+              Designers, developers, editors, educators, cantors, rabbis,
+              musicians, and makers are all welcome in this field of work.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Spread the word</h3>
+            <p>
+              Share projects with friends, communities, and institutions
+              that might resonate with this blend of Torah and tech.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>
+            Want to collaborate, support, or simply say shalom?
+            Send a note and we’ll follow up as LuminaNexus grows.
+          </p>
+        </div>
+
+        <!-- Netlify-ready contact form -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          class="contact-form"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <div class="form-grid">
+            <label>
+              Name
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              How would you like to be involved?
+              <select name="role">
+                <option value="">Choose one (or leave open)</option>
+                <option value="supporter">Supporter / donor</option>
+                <option value="collaborator">Creative / collaborator</option>
+                <option value="learner">Learner / reader</option>
+                <option value="rabbi">Rabbi / educator</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="full-width">
+            Message
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Share your thoughts, questions, or ideas…"
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit" class="btn primary">
+            Send message
+          </button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="footer-title">Luminanexus.org</span>
-        <span class="footer-subtitle">A small light in honor of the Infinite Light.</span>
-      </div>
-      <div class="footer-links">
-        <a href="#hero">Top</a>
-        <a href="chavruta/index.html">Chavruta</a>
-        <a href="library/index.html">Celestial Library</a>
-        <a href="#about">About</a>
-        <a href="#support">Tzedakah</a>
-      </div>
+    <div class="container footer-inner">
+      <p class="footer-brand">
+        LuminaNexus.org · a small nexus of light-linked projects
+      </p>
+      <p class="footer-meta">
+        © <span id="year"></span> LuminaNexus. All rights reserved.
+      </p>
     </div>
-
-    <p class="footer-copy">
-      &copy; 2025 LuminaNexus.org. All rights reserved.
-    </p>
   </footer>
-
-  <!-- Gate of the Day script -->
-  <script>
-    (function () {
-      var gates = [
-        {
-          id: "ab",
-          hebrew: "אב",
-          name: "Gate אב — Alef–Bet",
-          text: "Beginning & building: a quiet seed finding its first house in the world."
-        },
-        {
-          id: "ag",
-          hebrew: "אג",
-          name: "Gate אג — Alef–Gimel",
-          text: "Beginning & movement: the first step from stillness into a journey."
-        },
-        {
-          id: "ad",
-          hebrew: "אד",
-          name: "Gate אד — Alef–Dalet",
-          text: "Source & doorway: standing humbly in the threshold between knowing and not-knowing."
-        },
-        {
-          id: "ah",
-          hebrew: "אה",
-          name: "Gate אה — Alef–Hei",
-          text: "Breath & being: the soft exhale that reminds you simple existence is already a gift."
-        },
-        {
-          id: "al",
-          hebrew: "אל",
-          name: "Gate אל — Alef–Lamed",
-          text: "Source & learning: seeking wisdom that circles back into kindness and awe."
-        },
-        {
-          id: "am",
-          hebrew: "אם",
-          name: "Gate אם — Alef–Mem",
-          text: "Source & water: the hidden underground spring that quietly nourishes your life."
-        },
-        {
-          id: "an",
-          hebrew: "אנ",
-          name: "Gate אנ — Alef–Nun",
-          text: "Source in descent: even in falling, the story is still held by the One."
-        }
-      ];
-
-      var today = new Date();
-      var index =
-        (today.getFullYear() + today.getMonth() + today.getDate()) % gates.length;
-      var gate = gates[index];
-
-      var hebrewEl = document.getElementById("daily-gate-hebrew");
-      var nameEl = document.getElementById("daily-gate-name");
-      var textEl = document.getElementById("daily-gate-text");
-
-      if (gate && hebrewEl && nameEl && textEl) {
-        hebrewEl.textContent = gate.hebrew;
-        nameEl.textContent = gate.name;
-        textEl.textContent = gate.text;
-      }
-    })();
-  </script>
 </body>
 </html>
