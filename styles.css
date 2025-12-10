@@ -1,22 +1,25 @@
+/* =======================================
+   LuminaNexus.org – Global Styles
+   ======================================= */
+
 :root {
   --bg: #020617;
   --bg-alt: #020617;
   --surface: #020617;
   --surface-alt: #020617;
-  --card: #020617;
-  --card-alt: #020617;
   --accent: #f97316;
   --accent-soft: rgba(249, 115, 22, 0.12);
   --accent-strong: #fb923c;
   --text: #e5e7eb;
   --text-soft: #9ca3af;
   --border-subtle: rgba(148, 163, 184, 0.25);
-  --danger: #ef4444;
   --radius-lg: 1.25rem;
   --radius-md: 0.9rem;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
   --max-width: 1120px;
 }
+
+/* RESET-ish */
 
 *,
 *::before,
@@ -35,7 +38,7 @@ body {
   min-height: 100vh;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617 52%);
+  background: radial-gradient(circle at top, #0f172a, #020617 55%);
   color: var(--text);
 }
 
@@ -60,27 +63,29 @@ a:hover {
   padding-inline: 1.5rem;
 }
 
-/* HEADER */
+/* =======================================
+   HEADER & NAV
+   ======================================= */
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 50;
   backdrop-filter: blur(16px);
   background: linear-gradient(
     to bottom,
-    rgba(15, 23, 42, 0.92),
+    rgba(15, 23, 42, 0.96),
     rgba(15, 23, 42, 0.85),
     transparent
   );
-  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.85rem;
+  padding-block: 0.9rem;
   gap: 1rem;
 }
 
@@ -91,8 +96,8 @@ a:hover {
 }
 
 .brand-mark {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 999px;
   background: radial-gradient(circle at 30% 20%, #facc15, #f97316 55%, #7c2d12);
   display: inline-flex;
@@ -132,7 +137,7 @@ a:hover {
 }
 
 .site-nav a {
-  padding: 0.4rem 0.2rem;
+  padding: 0.35rem 0.2rem;
   color: var(--text-soft);
   border-radius: 999px;
   transition: color 0.15s ease, background-color 0.15s ease;
@@ -140,14 +145,14 @@ a:hover {
 
 .site-nav a:hover {
   color: #e5e7eb;
-  background-color: rgba(148, 163, 184, 0.12);
+  background-color: rgba(148, 163, 184, 0.15);
 }
 
 .nav-cta {
   padding-inline: 0.9rem;
   padding-block: 0.4rem;
   border-radius: 999px;
-  border: 1px solid rgba(248, 250, 252, 0.12);
+  border: 1px solid rgba(248, 250, 252, 0.16);
   color: #e5e7eb;
 }
 
@@ -179,18 +184,25 @@ a:hover {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* HERO */
+/* =======================================
+   HERO
+   ======================================= */
 
 .hero {
-  padding-top: 4.5rem;
+  padding-top: 4.2rem;
   padding-bottom: 3.5rem;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2.15fr);
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
   gap: 3rem;
   align-items: center;
+}
+
+/* Make hero feel centered on large screens */
+.hero .container {
+  max-width: 1200px;
 }
 
 .eyebrow {
@@ -203,7 +215,7 @@ a:hover {
 
 .hero-text h1 {
   font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: clamp(2.1rem, 3vw, 2.6rem);
+  font-size: clamp(2.2rem, 3vw, 2.7rem);
   line-height: 1.12;
   margin: 0 0 1rem;
 }
@@ -352,14 +364,16 @@ a:hover {
   }
 }
 
-/* SECTIONS */
+/* =======================================
+   SECTIONS, GRIDS, CARDS
+   ======================================= */
 
 .section {
   padding-block: 3.5rem;
 }
 
 .section-alt {
-  background: radial-gradient(circle at bottom, #020617, #020617 52%);
+  background: radial-gradient(circle at bottom, #020617, #020617 55%);
 }
 
 .section-header {
@@ -378,8 +392,6 @@ a:hover {
   color: var(--text-soft);
   margin: 0;
 }
-
-/* GRIDS & CARDS */
 
 .cards-grid,
 .projects-grid {
@@ -467,7 +479,9 @@ a:hover {
   color: var(--accent-strong);
 }
 
-/* CONTACT FORM */
+/* =======================================
+   CONTACT FORM
+   ======================================= */
 
 .contact-form {
   background: radial-gradient(circle at top left, #0f172a, #020617 70%);
@@ -519,7 +533,9 @@ textarea {
   margin-bottom: 1rem;
 }
 
-/* FOOTER */
+/* =======================================
+   FOOTER
+   ======================================= */
 
 .site-footer {
   border-top: 1px solid rgba(148, 163, 184, 0.3);
@@ -536,90 +552,14 @@ textarea {
   color: var(--text-soft);
 }
 
-.footer-brand {
-  margin: 0;
-}
-
+.footer-brand,
 .footer-meta {
   margin: 0;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 880px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2.4rem;
-  }
-
-  .hero-orbit {
-    order: -1;
-  }
-}
-
-@media (max-width: 720px) {
-  .site-nav {
-    position: absolute;
-    inset-inline: 0;
-    top: 100%;
-    background: rgba(15, 23, 42, 0.98);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-    padding-inline: 1.5rem;
-    padding-bottom: 0.85rem;
-    padding-top: 0.25rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
-    transform: translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.18s ease, opacity 0.18s ease;
-  }
-
-  .site-nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero {
-    padding-top: 3.3rem;
-  }
-
-  .section {
-    padding-block: 3rem;
-  }
-
-  .contact-form {
-    padding-inline: 1.3rem;
-  }
-
-  .footer-inner {
-    align-items: flex-start;
-  }
-}
-/* ============================
-   ChavrutaGPT chat styling
-   ============================ */
-/* Widen the hero on large screens so it doesn't hug the right side */
-.hero .container {
-  max-width: none;           /* let it take the full viewport width */
-  padding-inline: 3.5rem;    /* nice breathing room on left/right */
-}
-
-/* On smaller screens, fall back to the normal container width */
-@media (max-width: 1200px) {
-  .hero .container {
-    max-width: var(--max-width);
-    padding-inline: 1.5rem;
-  }
-}
+/* =======================================
+   CHAVRUTA GPT CHAT
+   ======================================= */
 
 .chavruta-layout {
   display: grid;
@@ -727,7 +667,20 @@ textarea {
   margin-top: 0.25rem;
 }
 
+/* =======================================
+   RESPONSIVE
+   ======================================= */
+
 @media (max-width: 880px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.4rem;
+  }
+
+  .hero-orbit {
+    order: -1;
+  }
+
   .chavruta-layout {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -738,5 +691,47 @@ textarea {
 
   .chat-sidebar {
     order: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-nav {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background: rgba(15, 23, 42, 0.98);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    padding-inline: 1.5rem;
+    padding-bottom: 0.85rem;
+    padding-top: 0.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+
+  .site-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero {
+    padding-top: 3.4rem;
+  }
+
+  .section {
+    padding-block: 3rem;
+  }
+
+  .contact-form {
+    padding-inline: 1.3rem;
   }
 }
