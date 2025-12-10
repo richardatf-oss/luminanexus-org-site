@@ -107,6 +107,11 @@ img {
   background: rgba(148, 163, 184, 0.2);
   color: #e5e7eb;
 }
+/* Active nav link */
+.site-nav a.nav-active {
+  background: rgba(249, 115, 22, 0.25);
+  color: #e5e7eb;
+}
 
 .nav-cta {
   padding: 0.3rem 0.7rem;
