@@ -79,8 +79,8 @@
         <div class="section-header">
           <h2>Chat with ChavrutaGPT</h2>
           <p>
-            Share a question, a text you’re learning, or a topic you’re curious about.
-            The chat keeps context during your session so you can build on ideas.
+            Type or speak your question. ChavrutaGPT will answer in text, and
+            you can optionally have the response read aloud.
           </p>
         </div>
 
@@ -112,6 +112,14 @@
               <div class="chat-form-actions">
                 <button type="submit" class="btn primary">Send to chavruta</button>
                 <button type="button" id="clear-chat" class="btn ghost btn-sm">Clear</button>
+
+                <button type="button" id="voice-input-toggle" class="btn ghost btn-sm">
+                  🎙️ Voice input
+                </button>
+                <button type="button" id="voice-output-toggle" class="btn ghost btn-sm">
+                  🔊 Voice off
+                </button>
+
                 <span id="chat-status" class="chat-status" aria-live="polite"></span>
               </div>
             </form>
