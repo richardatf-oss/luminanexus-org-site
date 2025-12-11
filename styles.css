@@ -518,3 +518,111 @@ textarea {
     align-items: flex-start;
   }
 }
+/* 231 Gates map */
+
+.gates-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.gates-grid {
+  --gates-cols: 23;
+  display: grid;
+  grid-template-columns: repeat(var(--gates-cols), minmax(1.6rem, 2.1rem));
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.gates-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.15rem;
+  min-height: 1.6rem;
+  box-sizing: border-box;
+}
+
+.gates-cell--corner {
+  opacity: 0;
+}
+
+.gates-cell--header {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #a9b4cf;
+}
+
+.gates-cell--disabled {
+  opacity: 0.08;
+}
+
+.gates-cell--empty {
+  opacity: 0.16;
+}
+
+.gates-cell--empty::before,
+.gates-cell--disabled::before {
+  content: "·";
+}
+
+.gates-cell--active {
+  cursor: pointer;
+  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d);
+  box-shadow: 0 0 8px rgba(255, 148, 90, 0.7);
+  opacity: 0.9;
+}
+
+.gates-cell--active::before {
+  content: "•";
+  color: #0b1020;
+  font-size: 0.85rem;
+}
+
+.gates-cell--active:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(255, 148, 90, 0.95);
+}
+
+.gates-details {
+  flex: 1 1 16rem;
+  min-width: 14rem;
+  max-width: 24rem;
+  border-radius: 1rem;
+  padding: 1.4rem 1.6rem;
+  background: radial-gradient(circle at top left, #192033, #090d16);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.gates-details h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.gates-details-tree {
+  font-size: 0.9rem;
+  color: #ffc27f;
+  margin-bottom: 0.75rem;
+}
+
+.gates-details-notes {
+  font-size: 0.85rem;
+  color: #a9b4cf;
+}
+
+@media (max-width: 900px) {
+  .gates-layout {
+    flex-direction: column;
+  }
+
+  .gates-grid {
+    font-size: 0.72rem;
+    grid-template-columns: repeat(var(--gates-cols), minmax(1.4rem, 1.9rem));
+  }
+}
