@@ -626,3 +626,46 @@ textarea {
     grid-template-columns: repeat(var(--gates-cols), minmax(1.4rem, 1.9rem));
   }
 }
+/* Aleph hero orb */
+
+.hero-orbit--aleph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-aleph-wrap {
+  position: relative;
+  width: 260px;
+  max-width: 40vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #242a3e, #050711 70%);
+  box-shadow:
+    0 0 40px rgba(255, 148, 90, 0.5),
+    0 0 120px rgba(255, 148, 90, 0.28);
+}
+
+.hero-aleph-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* make the flames pop without wrecking the image */
+  filter: saturate(1.35) contrast(1.1);
+  mix-blend-mode: screen;
+}
+
+/* Small screens: keep it from dominating */
+
+@media (max-width: 800px) {
+  .hero-aleph-wrap {
+    width: 200px;
+    box-shadow:
+      0 0 28px rgba(255, 148, 90, 0.45),
+      0 0 80px rgba(255, 148, 90, 0.22);
+  }
+}
