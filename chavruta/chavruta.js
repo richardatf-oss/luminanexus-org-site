@@ -1,127 +1,160 @@
-// /chavruta/chavruta.js
+// chavruta/chavruta.js
+// Front-end script for ChavrutaGPT on LuminaNexus.org
+// Talks to the Netlify function at /.netlify/functions/chavruta
 
-document.addEventListener('DOMContentLoaded', () => {
-  const chatLog = document.getElementById('chat-log');
-  const input = document.getElementById('chavruta-input');
-  const sendBtn = document.getElementById('chavruta-send');
-  const clearBtn = document.getElementById('chavruta-clear');
-  const statusEl = document.getElementById('chavruta-status');
+(function () {
+  const historyEl = document.getElementById("chavruta-history");
+  const inputEl = document.getElementById("chavruta-input");
+  const sendBtn = document.getElementById("chavruta-send");
+  const clearBtn = document.getElementById("chavruta-clear");
+  const statusEl = document.getElementById("chavruta-status");
 
-  const history = [];
-
-  function setStatus(text) {
-    if (statusEl) statusEl.textContent = text;
+  if (!historyEl || !inputEl || !sendBtn) {
+    console.error(
+      "Chavruta script: missing one of chavruta-history, chavruta-input, chavruta-send in the HTML."
+    );
+    return;
   }
 
-  function addBubble(role, text) {
-    if (!chatLog) return null;
-    const div = document.createElement('div');
-    div.classList.add('chat-bubble');
-    if (role === 'assistant') {
-      div.classList.add('chat-bubble-system');
-    } else {
-      div.classList.add('chat-bubble-user');
-    }
-    div.textContent = text;
-    chatLog.appendChild(div);
-    chatLog.scrollTop = chatLog.scrollHeight;
+  // Simple in-memory history we send to the Netlify function
+  let convoHistory = [];
 
-    if (role === 'assistant' || role === 'user') {
-      history.push({ role, content: text });
-    }
-
-    return div;
+  function setStatus(message) {
+    if (statusEl) statusEl.textContent = message;
   }
 
-  async function sendToChavruta(userText) {
-    const thinkingBubble = addBubble('assistant', 'Thinking…');
-    setStatus('Sending question to ChavrutaGPT…');
+  function createBubble(role, text) {
+    const bubble = document.createElement("div");
+    bubble.className =
+      "chavruta-bubble " +
+      (role === "assistant" ? "chavruta-bubble-assistant" : "chavruta-bubble-user");
+    bubble.textContent = text;
+    historyEl.appendChild(bubble);
+    historyEl.scrollTop = historyEl.scrollHeight;
+    return bubble;
+  }
+
+  function clearConversation() {
+    convoHistory = [];
+    historyEl.innerHTML = "";
+
+    // Optional: reset with a friendly greeting
+    createBubble(
+      "assistant",
+      "Shalom, haver. I’m ChavrutaGPT—an AI learning partner created through LuminaNexus. What would you like to explore today?"
+    );
+    createBubble(
+      "assistant",
+      "You can ask about a pasuk, a sugya, a sefer from the Library, or a question that weaves Torah and physics."
+    );
+    setStatus("ChavrutaGPT ready.");
+  }
+
+  async function sendToChavruta() {
+    const text = (inputEl.value || "").trim();
+    if (!text) {
+      setStatus("Please type a question or comment first.");
+      inputEl.focus();
+      return;
+    }
+
+    // Add the user's message locally
+    createBubble("user", text);
+    convoHistory.push({ role: "user", content: text });
+
+    // Keep only the last few exchanges so the prompt doesn't explode
+    if (convoHistory.length > 12) {
+      convoHistory = convoHistory.slice(convoHistory.length - 12);
+    }
+
+    // Clear the input box
+    inputEl.value = "";
+
+    // Show "thinking…" bubble
+    const thinkingBubble = createBubble("assistant", "Thinking together…");
+
+    // Disable while sending
+    sendBtn.disabled = true;
+    if (clearBtn) clearBtn.disabled = true;
+    setStatus("Sending question to ChavrutaGPT…");
 
     try {
-      const res = await fetch('/.netlify/functions/chavruta', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/.netlify/functions/chavruta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          latestUserText: userText,
-          history,
+          latestUserText: text,
+          history: convoHistory,
         }),
       });
 
       if (!res.ok) {
-        const msg = `HTTP error ${res.status}`;
-        console.error('Chavruta function error:', msg);
-        if (thinkingBubble) {
-          thinkingBubble.textContent =
-            'Sorry, there was a problem talking to ChavrutaGPT. Please try again.';
-        }
-        setStatus(msg);
+        const details = await res.text();
+        console.error("Chavruta function HTTP error:", res.status, details);
+        thinkingBubble.textContent =
+          "Sorry, something went wrong talking to the server (status " +
+          res.status +
+          ").";
+        setStatus("Server error while contacting ChavrutaGPT.");
         return;
       }
 
       const data = await res.json();
-      const reply = (data.reply || '').trim();
 
-      if (thinkingBubble) {
+      if (data.error) {
+        console.error("Chavruta function returned error:", data);
         thinkingBubble.textContent =
-          reply ||
-          "I'm not sure how to respond just now. Let's try asking in a different way.";
+          "Sorry, there was a problem on the server: " + data.error;
+        setStatus("Server error: " + (data.error || "Unknown error"));
+        return;
       }
+
+      const reply = (data.reply || "").trim();
 
       if (reply) {
-        history.push({ role: 'assistant', content: reply });
-      }
-
-      setStatus('Response received from ChavrutaGPT.');
-    } catch (err) {
-      console.error('Chavruta client error:', err);
-      if (thinkingBubble) {
+        thinkingBubble.textContent = reply;
+        convoHistory.push({ role: "assistant", content: reply });
+        setStatus("Response received from ChavrutaGPT.");
+      } else {
         thinkingBubble.textContent =
-          'Sorry, there was a network error talking to ChavrutaGPT.';
+          "I'm not sure how to respond just now. Let's try asking in a different way.";
+        setStatus("ChavrutaGPT could not generate a reply.");
       }
-      setStatus('Network error. See console for details.');
+    } catch (err) {
+      console.error("Network or function error talking to ChavrutaGPT:", err);
+      thinkingBubble.textContent =
+        "Sorry, there was a network error while trying to reach ChavrutaGPT.";
+      setStatus("Network error contacting ChavrutaGPT.");
+    } finally {
+      sendBtn.disabled = false;
+      if (clearBtn) clearBtn.disabled = false;
+      historyEl.scrollTop = historyEl.scrollHeight;
     }
   }
 
-  function handleSend() {
-    if (!input) return;
-    const text = (input.value || '').trim();
-    if (!text) return;
+  // Wire up buttons & enter key
+  sendBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    sendToChavruta();
+  });
 
-    addBubble('user', text);
-    input.value = '';
-    sendToChavruta(text);
-  }
-
-  // Wire up buttons and keyboard
-  if (sendBtn) {
-    sendBtn.addEventListener('click', (e) => {
+  if (clearBtn) {
+    clearBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      handleSend();
+      clearConversation();
     });
   }
 
-  if (input) {
-    input.addEventListener('keydown', (e) => {
-      // Ctrl+Enter / Cmd+Enter sends
-      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        handleSend();
-      }
-    });
-  }
-
-  if (clearBtn && chatLog) {
-    clearBtn.addEventListener('click', (e) => {
+  // Allow Ctrl+Enter to send from the textarea
+  inputEl.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
       e.preventDefault();
-      chatLog.innerHTML = '';
-      history.length = 0;
-      addBubble(
-        'assistant',
-        'Shalom, haver. I’m ChavrutaGPT—your learning partner. What would you like to explore today?'
-      );
-      setStatus('Conversation cleared.');
-    });
-  }
+      sendToChavruta();
+    }
+  });
 
-  setStatus('ChavrutaGPT ready.');
-});
+  // Initial greeting
+  clearConversation();
+})();
