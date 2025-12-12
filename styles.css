@@ -1,4 +1,4 @@
-/* ==== Base layout & theme ========================================= */
+/* ===== Base ====================================================== */
 
 *,
 *::before,
@@ -15,7 +15,7 @@ body {
 body {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  background: radial-gradient(circle at top, #171d30 0, #050713 55%, #020309 100%);
+  background: radial-gradient(circle at top, #171d30 0, #050713 55%, #020308 100%);
   color: #f5f7ff;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -34,8 +34,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-/* Containers */
 
 .container {
   width: 100%;
@@ -56,7 +54,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.2rem, 3vw + 1.5rem, 3rem);
+  font-size: clamp(2.1rem, 3vw + 1.4rem, 2.9rem);
   line-height: 1.1;
 }
 
@@ -65,7 +63,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 p {
@@ -80,7 +78,7 @@ p {
   color: #a9b4cf;
 }
 
-/* ==== Header / navigation ========================================= */
+/* ===== Header ==================================================== */
 
 .site-header {
   position: sticky;
@@ -149,7 +147,6 @@ p {
 
 .site-nav a {
   color: #d8e0ff;
-  text-decoration: none;
 }
 
 .site-nav a:hover {
@@ -162,6 +159,8 @@ p {
   border: 1px solid rgba(255, 180, 100, 0.7);
   background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.18), transparent);
 }
+
+/* Mobile nav toggle */
 
 .nav-toggle {
   display: none;
@@ -209,17 +208,17 @@ p {
   }
 }
 
-/* ==== Hero ======================================================== */
+/* ===== Hero ====================================================== */
 
 .hero {
-  padding: 4.5rem 0 3.5rem;
+  padding: 3.2rem 0 2.6rem;
 }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-  align-items: center;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 0.9fr);
+  align-items: flex-start;
+  gap: 2.4rem;
 }
 
 .hero-subtitle {
@@ -242,7 +241,7 @@ p {
 }
 
 .hero-actions-secondary {
-  margin-top: 0.65rem;
+  margin-top: 0.7rem;
 }
 
 /* Buttons */
@@ -257,8 +256,8 @@ p {
   font-size: 0.86rem;
   font-weight: 500;
   border: 1px solid transparent;
-  text-decoration: none;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease,
     border-color 0.12s ease;
 }
@@ -298,18 +297,19 @@ p {
   background: rgba(19, 26, 46, 0.95);
 }
 
-/* Hero orbit */
+/* Hero orb – small, upper-right */
 
 .hero-orbit {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.7rem;
+  padding-top: 0.4rem;
 }
 
 .orbit {
   position: relative;
-  width: 260px;
+  width: 180px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: flex;
@@ -325,7 +325,7 @@ p {
 }
 
 .orbit-ring-2 {
-  inset: 12%;
+  inset: 14%;
   border-style: dashed;
   opacity: 0.6;
 }
@@ -340,22 +340,33 @@ p {
   justify-content: center;
   background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d);
   box-shadow:
-    0 0 40px rgba(255, 148, 90, 0.7),
-    0 0 120px rgba(255, 148, 90, 0.35);
+    0 0 26px rgba(255, 148, 90, 0.7),
+    0 0 80px rgba(255, 148, 90, 0.35);
   color: #050713;
-  font-size: 2.8rem;
 }
 
 .orbit-core--flame {
   overflow: hidden;
 }
 
+/* Fallback gradient if image is missing */
+.orbit-core--flame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d 70%, #c14424 100%);
+  opacity: 0.95;
+}
+
 .orbit-aleph-image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
   display: block;
+  border-radius: 50%;
+  object-fit: cover;
   filter: saturate(1.3) contrast(1.1);
   mix-blend-mode: screen;
 }
@@ -364,32 +375,29 @@ p {
   font-size: 0.8rem;
   color: #a9b4cf;
   text-align: center;
-  max-width: 14rem;
+  max-width: 12rem;
 }
 
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: minmax(0, 1fr);
-    gap: 2.5rem;
+    gap: 2.3rem;
   }
 
   .hero-orbit {
     order: -1;
-  }
-
-  .hero {
-    padding-top: 3.5rem;
+    align-items: flex-end;
   }
 }
 
-/* ==== Sections & cards ============================================ */
+/* ===== Sections & cards ========================================== */
 
 .section {
-  padding: 3.25rem 0;
+  padding: 3.1rem 0;
 }
 
 .section-alt {
-  padding: 3.25rem 0;
+  padding: 3.1rem 0;
   background: radial-gradient(circle at top, rgba(19, 24, 43, 0.95), rgba(6, 9, 24, 0.98));
 }
 
@@ -403,12 +411,20 @@ p {
   color: #c3c9e7;
 }
 
-/* Cards grid */
+.section-header--split {
+  text-align: left;
+}
+
+/* Cards */
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.4rem;
+}
+
+.cards-grid--trees {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .card {
@@ -428,26 +444,7 @@ p {
   color: #ffddb0;
 }
 
-/* Trees grid a bit denser on wide screens */
-
-.cards-grid--trees {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-/* Chat-style list used on Gates pages */
-
-.chat-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.chat-list li {
-  margin-bottom: 0.35rem;
-}
-
-/* ==== Footer ======================================================= */
+/* ===== Footer ==================================================== */
 
 .site-footer {
   padding: 2.4rem 0 2.6rem;
@@ -470,127 +467,18 @@ p {
   color: #8f9ac3;
 }
 
-/* ==== 231 Gates interactive matrix ================================ */
-
-.gates-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.gates-grid {
-  --gates-cols: 23;
-  display: grid;
-  grid-template-columns: repeat(var(--gates-cols), minmax(1.6rem, 2.1rem));
-  gap: 0.2rem;
-  font-size: 0.8rem;
-  user-select: none;
-}
-
-.gates-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.15rem;
-  min-height: 1.6rem;
-  box-sizing: border-box;
-}
-
-.gates-cell--corner {
-  opacity: 0;
-}
-
-.gates-cell--header {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #a9b4cf;
-}
-
-.gates-cell--disabled {
-  opacity: 0.08;
-}
-
-.gates-cell--empty {
-  opacity: 0.16;
-}
-
-.gates-cell--empty::before,
-.gates-cell--disabled::before {
-  content: "·";
-}
-
-.gates-cell--active {
-  cursor: pointer;
-  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d);
-  box-shadow: 0 0 8px rgba(255, 148, 90, 0.7);
-  opacity: 0.9;
-}
-
-.gates-cell--active::before {
-  content: "•";
-  color: #0b1020;
-  font-size: 0.85rem;
-}
-
-.gates-cell--active:hover {
-  opacity: 1;
-  transform: translateY(-1px);
-  box-shadow: 0 0 12px rgba(255, 148, 90, 0.95);
-}
-
-.gates-details {
-  flex: 1 1 16rem;
-  min-width: 14rem;
-  max-width: 24rem;
-  border-radius: 1rem;
-  padding: 1.4rem 1.6rem;
-  background: radial-gradient(circle at top left, #192033, #090d16);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-}
-
-.gates-details h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
-}
-
-.gates-details-tree {
-  font-size: 0.9rem;
-  color: #ffc27f;
-  margin-bottom: 0.75rem;
-}
-
-.gates-details-notes {
-  font-size: 0.85rem;
-  color: #a9b4cf;
-}
-
-@media (max-width: 900px) {
-  .gates-layout {
-    flex-direction: column;
-  }
-
-  .gates-grid {
-    font-size: 0.72rem;
-    grid-template-columns: repeat(var(--gates-cols), minmax(1.4rem, 1.9rem));
-  }
-}
-
-/* Small screens global tweaks */
+/* ===== Responsive tweaks ========================================= */
 
 @media (max-width: 640px) {
+  .container {
+    padding-inline: 1.1rem;
+  }
+
   .cards-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .header-inner {
-    padding-inline: 1.1rem;
-  }
-
-  .container {
     padding-inline: 1.1rem;
   }
 }
