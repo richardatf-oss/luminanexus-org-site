@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChavrutaGPT | LuminaNexus</title>
+  <title>ChavrutaGPT | LuminaNexus.org</title>
 
   <link rel="stylesheet" href="/styles.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <script defer src="/script.js"></script>
-  <script defer src="/chavruta/chavruta.js"></script>
 </head>
-<body id="top">
-  <!-- HEADER -->
+<body class="chavruta-page">
+  <!-- HEADER (same as home) -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="brand">
@@ -33,9 +36,10 @@
 
       <nav class="site-nav">
         <a href="/#mission">Mission</a>
+        <a href="/#trees">Trees</a>
         <a href="/#projects">Projects</a>
         <a href="/library/">Library</a>
-        <a href="/chavruta/">Chavruta</a>
+        <a href="/chavruta/" class="nav-current">Chavruta</a>
         <a href="/#get-involved">Get involved</a>
         <a href="/#contact" class="nav-cta">Contact</a>
       </nav>
@@ -43,139 +47,122 @@
   </header>
 
   <main>
-    <!-- HERO / INTRO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
+    <!-- TOP HERO FOR CHAVRUTA -->
+    <section class="chavruta-hero">
+      <div class="container chavruta-layout">
+        <div class="chavruta-summary">
           <p class="eyebrow">Experiment in Torah &amp; AI</p>
           <h1>ChavrutaGPT: a small AI learning partner.</h1>
           <p class="hero-subtitle">
-            ChavrutaGPT is an experimental tool from LuminaNexus.org.
-            It cannot replace a teacher, rav, or real chavruta—but it can
-            help you frame questions, explore ideas, and connect sources
-            with care and curiosity.
+            ChavrutaGPT is an experimental tool from LuminaNexus.org. It cannot replace
+            a teacher, rav, or real chavruta—but it can help you frame questions,
+            explore ideas, and connect sources with care and curiosity.
           </p>
-          <p class="hero-meta">
-            Please do not treat responses as psak halacha, or as medical,
-            legal, or financial advice. Always check with real-world
-            teachers and experts.
+
+          <p class="chavruta-disclaimer">
+            Please do not treat responses as psak halacha, or as medical, legal, or
+            financial advice. Always check with real-world teachers and experts.
           </p>
         </div>
 
-        <div class="hero-orbit">
+        <aside class="hero-orbit chavruta-orbit">
           <div class="orbit">
-            <div class="orbit-core">ח</div>
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <div class="orbit-core">
+              <!-- Nun for "Nexus / Ner / Neshama" – a different node on the Tree -->
+              <span class="orbit-aleph">נ</span>
+            </div>
           </div>
           <p class="orbit-caption">
             Two voices, one Tree of Life. AI as helper, not posek.
           </p>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <!-- CHAT -->
-    <section class="section section-alt">
+    <!-- MAIN CHAT SECTION -->
+    <section class="section section-alt chavruta-chat-section">
       <div class="container">
         <div class="section-header">
           <h2>Chat with ChavrutaGPT</h2>
           <p>
-            Type or speak your question. ChavrutaGPT will answer in text, and
-            you can optionally have the response read aloud.
+            Type or speak your question. ChavrutaGPT will answer in text, and you can
+            optionally have the response read aloud <span class="chavruta-note">(voice features coming later).</span>
           </p>
         </div>
 
-        <div class="chavruta-layout">
-          <!-- Chat panel -->
-          <div class="chat-panel">
-            <div id="chat-log" class="chat-log">
-              <div class="chat-message chat-message-assistant">
-                <div class="chat-bubble">
-                  Shalom, haver. I’m ChavrutaGPT—an AI learning partner
-                  created through LuminaNexus. What would you like to
-                  explore today?
-                </div>
-              </div>
+        <div class="chavruta-chat-shell">
+          <!-- Chat "history" -->
+          <div class="chavruta-chat-history">
+            <div class="chat-bubble chat-bubble-system">
+              Shalom, haver. I’m ChavrutaGPT—an AI learning partner created through
+              LuminaNexus. What would you like to explore today?
             </div>
-
-            <form id="chat-form" class="chat-form">
-              <label class="full-width">
-                Your question or comment
-                <textarea
-                  id="chat-input"
-                  name="message"
-                  rows="3"
-                  placeholder="For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on…,” or “Explain tzimtzum using modern physics.”"
-                  required
-                ></textarea>
-              </label>
-
-              <div class="chat-form-actions">
-                <button type="submit" class="btn primary">Send to chavruta</button>
-                <button type="button" id="clear-chat" class="btn ghost btn-sm">Clear</button>
-
-                <button type="button" id="voice-input-toggle" class="btn ghost btn-sm">
-                  🎙️ Voice input
-                </button>
-                <button type="button" id="voice-output-toggle" class="btn ghost btn-sm">
-                  🔊 Voice off
-                </button>
-
-                <span id="chat-status" class="chat-status" aria-live="polite"></span>
-              </div>
-            </form>
+            <div class="chat-bubble chat-bubble-user">
+              Hi ChavrutaGPT! It’s great to connect with you. What text do you have in
+              mind for us to explore together?
+            </div>
+            <div class="chat-bubble chat-bubble-system">
+              Psalm 32 is a beautiful reflection on the themes of forgiveness and the
+              joy of a clear conscience. Let’s take a moment to unpack it together…
+            </div>
           </div>
 
-          <!-- Sidebar -->
-          <aside class="chat-sidebar">
-            <article class="card">
-              <h3>Good ways to use ChavrutaGPT</h3>
-              <ul class="chat-list">
-                <li>Summarize a sugya or perek in simple language.</li>
-                <li>Compare classic mefarshim on a pasuk.</li>
-                <li>Ask for metaphors that connect Torah and physics.</li>
-                <li>Draft questions to bring to a live chavruta or rav.</li>
-              </ul>
-            </article>
+          <!-- Input area -->
+          <label for="chavruta-input" class="chavruta-input-label">
+            Your question or comment
+          </label>
+          <textarea
+            id="chavruta-input"
+            class="chavruta-input"
+            placeholder='For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on Genesis 1:1,” or “Explain tzimtzum using modern physics.”'
+          ></textarea>
 
-            <article class="card">
-              <h3>Limits &amp; boundaries</h3>
-              <ul class="chat-list">
-                <li>No real psak halacha.</li>
-                <li>May make mistakes or oversimplify sources.</li>
-                <li>Always check primary texts and teachers.</li>
-              </ul>
-            </article>
-          </aside>
+          <div class="chavruta-actions">
+            <button class="btn btn-primary">Send to chavruta</button>
+            <button class="btn btn-ghost">Clear</button>
+            <button class="btn btn-ghost btn-pill">Voice input</button>
+            <button class="btn btn-ghost btn-pill">Voice off</button>
+          </div>
+        </div>
+
+        <!-- Guidance panels -->
+        <div class="cards-grid chavruta-guides">
+          <article class="card">
+            <h3>Good ways to use ChavrutaGPT</h3>
+            <ul>
+              <li>Summarize a sugya or perek in simple language.</li>
+              <li>Compare classic mefarshim on a pasuk.</li>
+              <li>Ask for metaphors that connect Torah and physics.</li>
+              <li>Draft questions to bring to a live chavruta or rav.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Limits &amp; boundaries</h3>
+            <ul>
+              <li>No real psak halacha.</li>
+              <li>May make mistakes or oversimplify sources.</li>
+              <li>May not reflect all views or minhagim.</li>
+              <li>Always check primary texts and teachers.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-brand">
-        ChavrutaGPT · a LuminaNexus experiment in AI-assisted learning
+        LuminaNexus.org · ChavrutaGPT experiment in AI-assisted learning
       </p>
       <p class="footer-meta">
         © <span id="year"></span> LuminaNexus. All rights reserved.
       </p>
     </div>
   </footer>
-
-  <!-- Sefaria Linker -->
-  <script
-    type="text/javascript"
-    charset="utf-8"
-    src="https://www.sefaria.org/linker.v3.js"
-  ></script>
-  <script>
-    if (window.sefaria && typeof sefaria.link === "function") {
-      sefaria.link({
-        mode: "popup-click",
-        contentLang: "bilingual",
-        interfaceLang: "english"
-      });
-    }
-  </script>
 </body>
 </html>
