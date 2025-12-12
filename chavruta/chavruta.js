@@ -1,170 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChavrutaGPT | LuminaNexus.org</title>
+// /chavruta/chavruta.js
 
-  <link rel="stylesheet" href="/styles.css" />
+document.addEventListener('DOMContentLoaded', () => {
+  const chatLog = document.querySelector('.chavruta-chat-history');
+  const input = document.getElementById('chavruta-input');
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  // Buttons inside the chavruta-actions bar
+  const sendBtn = document.querySelector(
+    '.chavruta-actions .btn.btn-primary'
+  );
+  const clearBtn = document.querySelector(
+    '.chavruta-actions .btn.btn-ghost'
+  );
 
-  <script src="/script.js" defer></script>
-  <script src="/chavruta/chavruta.js" defer></script>
-</head>
-<body class="chavruta-page">
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand">
-        <span class="brand-mark">LN</span>
-        <span class="brand-text">
-          <span class="brand-name">LuminaNexus</span>
-          <span class="brand-tagline">Light-linked learning</span>
-        </span>
-      </a>
+  const status = document.getElementById('chavruta-status');
+  const history = [];
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-      </button>
+  function setStatus(text) {
+    if (status) status.textContent = text;
+  }
 
-      <nav class="site-nav">
-        <a href="/#mission">Mission</a>
-        <a href="/#trees">Trees</a>
-        <a href="/#projects">Projects</a>
-        <a href="/library/">Library</a>
-        <a href="/chavruta/" class="nav-current">Chavruta</a>
-        <a href="/#get-involved">Get involved</a>
-        <a href="/#contact" class="nav-cta">Contact</a>
-      </nav>
-    </div>
-  </header>
+  function appendMessage(role, text) {
+    if (!chatLog) return null;
 
-  <main>
-    <!-- HERO -->
-    <section class="chavruta-hero">
-      <div class="container chavruta-layout">
-        <div class="chavruta-summary">
-          <p class="eyebrow">Experiment in Torah &amp; AI</p>
-          <h1>ChavrutaGPT: a small AI learning partner.</h1>
-          <p class="hero-subtitle">
-            ChavrutaGPT is an experimental tool from LuminaNexus.org. It cannot replace
-            a teacher, rav, or real chavruta—but it can help you frame questions,
-            explore ideas, and connect sources with care and curiosity.
-          </p>
+    const bubble = document.createElement('div');
+    bubble.classList.add('chat-bubble');
 
-          <p class="chavruta-disclaimer">
-            Please do not treat responses as psak halacha, or as medical, legal, or
-            financial advice. Always check with real-world teachers and experts.
-          </p>
-        </div>
+    if (role === 'assistant') {
+      bubble.classList.add('chat-bubble-system');
+    } else if (role === 'user') {
+      bubble.classList.add('chat-bubble-user');
+    }
 
-        <aside class="hero-orbit chavruta-orbit">
-          <div class="orbit">
-            <div class="orbit-ring orbit-ring-1"></div>
-            <div class="orbit-ring orbit-ring-2"></div>
-            <div class="orbit-core">
-              <!-- Nun for Nexus / Ner / Neshama -->
-              <span class="orbit-aleph">נ</span>
-            </div>
-          </div>
-          <p class="orbit-caption">
-            Two voices, one Tree of Life. AI as helper, not posek.
-          </p>
-        </aside>
-      </div>
-    </section>
+    bubble.textContent = text;
+    chatLog.appendChild(bubble);
+    chatLog.scrollTop = chatLog.scrollHeight;
 
-    <!-- CHAT SECTION -->
-    <section class="section section-alt chavruta-chat-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Chat with ChavrutaGPT</h2>
-          <p>
-            Type or speak your question. ChavrutaGPT will answer in text, and you can
-            optionally have the response read aloud
-            <span class="chavruta-note">(voice features coming later).</span>
-          </p>
-        </div>
+    if (role === 'assistant' || role === 'user') {
+      history.push({ role, content: text });
+    }
 
-        <div class="chavruta-chat-shell">
-          <!-- Chat history -->
-          <div class="chavruta-chat-history" id="chat-log">
-            <div class="chat-bubble chat-bubble-system">
-              Shalom, haver. I’m ChavrutaGPT—an AI learning partner created through
-              LuminaNexus. What would you like to explore today?
-            </div>
-            <div class="chat-bubble chat-bubble-user">
-              Hi ChavrutaGPT! It’s great to connect with you. What text do you have in
-              mind for us to explore together?
-            </div>
-            <div class="chat-bubble chat-bubble-system">
-              Psalm 32 is a beautiful reflection on the themes of forgiveness and the
-              joy of a clear conscience. Let’s take a moment to unpack it together…
-            </div>
-          </div>
+    return bubble;
+  }
 
-          <!-- Input area -->
-          <label for="chavruta-input" class="chavruta-input-label">
-            Your question or comment
-          </label>
-          <textarea
-            id="chavruta-input"
-            class="chavruta-input"
-            placeholder='For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on Genesis 1:1,” or “Explain tzimtzum using modern physics.”'
-          ></textarea>
+  function setLoading(bubble, isLoading) {
+    if (!bubble) return;
+    bubble.classList.toggle('chat-bubble--loading', isLoading);
+    if (isLoading) {
+      bubble.textContent = 'Thinking…';
+    }
+  }
 
-          <div class="chavruta-actions">
-            <button class="btn btn-primary" type="button">Send to chavruta</button>
-            <button class="btn btn-ghost" type="button">Clear</button>
-            <button class="btn btn-ghost btn-pill" type="button">Voice input</button>
-            <button class="btn btn-ghost btn-pill" type="button">Voice off</button>
-          </div>
-        </div>
+  async function sendToChavruta(userText) {
+    const loadingBubble = appendMessage('assistant', 'Thinking…');
+    setLoading(loadingBubble, true);
+    setStatus('Sending question to ChavrutaGPT…');
 
-        <!-- Guidance panels -->
-        <div class="cards-grid chavruta-guides">
-          <article class="card">
-            <h3>Good ways to use ChavrutaGPT</h3>
-            <ul>
-              <li>Summarize a sugya or perek in simple language.</li>
-              <li>Compare classic mefarshim on a pasuk.</li>
-              <li>Ask for metaphors that connect Torah and physics.</li>
-              <li>Draft questions to bring to a live chavruta or rav.</li>
-            </ul>
-          </article>
+    try {
+      const res = await fetch('/.netlify/functions/chavruta', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          latestUserText: userText,
+          history,
+        }),
+      });
 
-          <article class="card">
-            <h3>Limits &amp; boundaries</h3>
-            <ul>
-              <li>No real psak halacha.</li>
-              <li>May make mistakes or oversimplify sources.</li>
-              <li>May not reflect all views or minhagim.</li>
-              <li>Always check primary texts and teachers.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">
-        LuminaNexus.org · ChavrutaGPT experiment in AI-assisted learning
-      </p>
-      <p class="footer-meta">
-        © <span id="year"></span> LuminaNexus. All rights reserved.
-      </p>
-    </div>
-  </footer>
-</body>
-</html>
+      const data = await res.json();
+      const reply = (data.reply || '').trim();
+
+      setLoading(loadingBubble, false);
+      loadingBubble.textContent =
+        reply ||
+        "I'm not sure how to respond just now. Let's try another way to ask that.";
+
+      if (reply) {
+        history.push({ role: 'assistant', content: reply });
+      }
+
+      setStatus('Response received from ChavrutaGPT.');
+    } catch (err) {
+      console.error('Chavruta client error:', err);
+      setLoading(loadingBubble, false);
+      loadingBubble.textContent =
+        'Sorry, something went wrong talking to ChavrutaGPT. Please try again.';
+      setStatus('Error talking to ChavrutaGPT. See console for details.');
+    }
+  }
+
+  // Wire up buttons
+  if (sendBtn) {
+    sendBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const text = (input.value || '').trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      input.value = '';
+      sendToChavruta(text);
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (chatLog) chatLog.innerHTML = '';
+      history.length = 0;
+      appendMessage(
+        'assistant',
+        "Shalom, haver. I’m ChavrutaGPT—your learning partner. What would you like to explore today?"
+      );
+      setStatus('Conversation cleared.');
+    });
+  }
+
+  setStatus('ChavrutaGPT ready.');
+});
