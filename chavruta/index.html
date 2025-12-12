@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChavrutaGPT | LuminaNexus.org</title>
 
+  <!-- Main site styles -->
   <link rel="stylesheet" href="/styles.css" />
 
   <!-- Fonts -->
@@ -15,10 +16,13 @@
     rel="stylesheet"
   />
 
-  <script defer src="/script.js"></script>
+  <!-- Shared site script (nav, year, etc.) -->
+  <script src="/script.js" defer></script>
+  <!-- Chavruta chat wiring -->
+  <script src="/chavruta/chavruta.js" defer></script>
 </head>
 <body class="chavruta-page">
-  <!-- HEADER (same as home) -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="brand">
@@ -47,7 +51,7 @@
   </header>
 
   <main>
-    <!-- TOP HERO FOR CHAVRUTA -->
+    <!-- HERO -->
     <section class="chavruta-hero">
       <div class="container chavruta-layout">
         <div class="chavruta-summary">
@@ -70,7 +74,7 @@
             <div class="orbit-ring orbit-ring-1"></div>
             <div class="orbit-ring orbit-ring-2"></div>
             <div class="orbit-core">
-              <!-- Nun for "Nexus / Ner / Neshama" – a different node on the Tree -->
+              <!-- Nun for Nexus / Ner / Neshama -->
               <span class="orbit-aleph">נ</span>
             </div>
           </div>
@@ -81,20 +85,21 @@
       </div>
     </section>
 
-    <!-- MAIN CHAT SECTION -->
+    <!-- CHAT SECTION -->
     <section class="section section-alt chavruta-chat-section">
       <div class="container">
         <div class="section-header">
           <h2>Chat with ChavrutaGPT</h2>
           <p>
             Type or speak your question. ChavrutaGPT will answer in text, and you can
-            optionally have the response read aloud <span class="chavruta-note">(voice features coming later).</span>
+            optionally have the response read aloud
+            <span class="chavruta-note">(voice features coming later).</span>
           </p>
         </div>
 
         <div class="chavruta-chat-shell">
-          <!-- Chat "history" -->
-          <div class="chavruta-chat-history">
+          <!-- Chat history -->
+          <div class="chavruta-chat-history" id="chat-log">
             <div class="chat-bubble chat-bubble-system">
               Shalom, haver. I’m ChavrutaGPT—an AI learning partner created through
               LuminaNexus. What would you like to explore today?
@@ -120,11 +125,14 @@
           ></textarea>
 
           <div class="chavruta-actions">
-            <button class="btn btn-primary">Send to chavruta</button>
-            <button class="btn btn-ghost">Clear</button>
-            <button class="btn btn-ghost btn-pill">Voice input</button>
-            <button class="btn btn-ghost btn-pill">Voice off</button>
+            <button class="btn btn-primary" type="button">Send to chavruta</button>
+            <button class="btn btn-ghost" type="button">Clear</button>
+            <button class="btn btn-ghost btn-pill" type="button">Voice input</button>
+            <button class="btn btn-ghost btn-pill" type="button">Voice off</button>
           </div>
+
+          <!-- Live status line for debugging + UX -->
+          <p id="chavruta-status" class="chavruta-status"></p>
         </div>
 
         <!-- Guidance panels -->
