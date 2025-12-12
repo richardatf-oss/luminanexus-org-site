@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The 231 Gates | LuminaNexus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A first map of the 231 Gates: pairings of the Hebrew letters as paths between Trees, sefirah, and ideas in the Quantum Etz Chaim."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="ln-body">
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a href="/" class="brand">
+          <span class="brand-mark">LN</span>
+          <span class="brand-text">
+            LuminaNexus
+            <span class="brand-subtitle">Light-linked learning</span>
+          </span>
+        </a>
+
+        <nav class="site-nav">
+          <a href="/" class="nav-link">Mission</a>
+          <a href="/trees/" class="nav-link">Trees</a>
+          <a href="/projects/" class="nav-link">Projects</a>
+          <a href="/library/" class="nav-link nav-link-active">Library</a>
+          <a href="/chavruta/" class="nav-link">Chavruta</a>
+          <a href="/get-involved/" class="nav-link">Get involved</a>
+          <a href="/contact/" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main gates-main">
+      <!-- HERO -->
+      <section class="gates-hero">
+        <div class="container gates-hero-inner">
+          <div class="gates-hero-copy">
+            <p class="eyebrow">THE CELESTIAL LIBRARY OF THE 231 GATES</p>
+            <h1>The 231 Gates</h1>
+            <p class="gates-hero-lead">
+              Between every two letters of the Aleph-Bet there is a
+              <em>Gate</em>—a path of meaning, movement, and possible worlds.
+              This page is a first, simple map: a place to play with a few
+              sample Gates and sketch how a full star-map might grow.
+            </p>
+            <p class="gates-hero-math">
+              22 letters × 21 pairings ÷ 2 = <strong>231 Gates</strong> of
+              movement.
+            </p>
+          </div>
+
+          <aside class="gates-hero-orb" aria-hidden="true">
+            <div class="gates-orb-shell">
+              <div class="gates-orb-ring gates-orb-ring-lg"></div>
+              <div class="gates-orb-ring gates-orb-ring-md"></div>
+              <div class="gates-orb-ring gates-orb-ring-sm"></div>
+              <div class="gates-orb-core">א</div>
+            </div>
+            <p class="gates-orb-caption">
+              Letters as lights, Gates as paths between them.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- LAYOUT: EXPLAINER + INTERACTIVE GRID -->
+      <section class="gates-layout">
+        <div class="container gates-layout-inner">
+          <!-- Left: explainer -->
+          <article class="card gates-explainer">
+            <h2>One Field, many Gates</h2>
+            <p>
+              In classic Kabbalah, the 231 Gates are the pairings of the twenty-two
+              letters. Each pairing—like <strong>אב</strong>, <strong>אג</strong>,
+              or <strong>את</strong>—can be read as a tiny bridge between
+              sefirot, Trees, and ideas.
+            </p>
+            <p>
+              Under the Quantum Etz Chaim, each Gate can connect:
+            </p>
+            <ul class="gates-bullets">
+              <li>Two letters and their directions in the Field,</li>
+              <li>Two sefirot or modes of the unified Field,</li>
+              <li>
+                Two Trees or Sefer-projects (like
+                <em>Etz HaReishit</em> and <em>Etz HaEven</em>),
+              </li>
+              <li>
+                Or two human questions that are secretly the same conversation.
+              </li>
+            </ul>
+            <p>
+              This first version keeps things deliberately simple: just a small
+              sample of Gates, each with a short note about how it might link
+              letters, sefirot, and Trees. Over time, this can grow into an
+              interactive star-field you can walk through.
+            </p>
+          </article>
+
+          <!-- Right: interactive sample gates -->
+          <section class="card gates-interactive" aria-labelledby="gates-play-heading">
+            <div class="gates-interactive-header">
+              <h2 id="gates-play-heading">Play with a few Gates</h2>
+              <p>
+                Click a Gate to see a short description of how it might connect
+                letters, sefirot, and Trees. For now, this is a tiny sampler—
+                a seed for a much larger map.
+              </p>
+            </div>
+
+            <div class="gate-pill-grid" aria-label="Sample Gates">
+              <!-- You can add more later; just match data-gate with gates.js -->
+              <button class="gate-pill" type="button" data-gate="אב">אב</button>
+              <button class="gate-pill" type="button" data-gate="אג">אג</button>
+              <button class="gate-pill" type="button" data-gate="אד">אד</button>
+              <button class="gate-pill" type="button" data-gate="אמ">אמ</button>
+              <button class="gate-pill" type="button" data-gate="אש">אש</button>
+              <button class="gate-pill" type="button" data-gate="בת">בת</button>
+              <button class="gate-pill" type="button" data-gate="גל">גל</button>
+              <button class="gate-pill" type="button" data-gate="לב">לב</button>
+              <button class="gate-pill" type="button" data-gate="שלום">שלום</button>
+            </div>
+
+            <article class="gate-detail-card" aria-live="polite">
+              <header class="gate-detail-header">
+                <p class="gate-detail-label">Selected Gate</p>
+                <h3 id="gate-name">Choose a Gate to begin</h3>
+              </header>
+
+              <p id="gate-summary" class="gate-summary">
+                The notes here are just first sketches—small kavannot for how a
+                Gate might move. Later, each Gate can link to a full page with
+                sources, diagrams, and audio.
+              </p>
+
+              <dl class="gate-meta">
+                <div class="gate-meta-row">
+                  <dt>Letters</dt>
+                  <dd id="gate-letters">—</dd>
+                </div>
+                <div class="gate-meta-row">
+                  <dt>Field / Sefirot</dt>
+                  <dd id="gate-field">—</dd>
+                </div>
+                <div class="gate-meta-row">
+                  <dt>Trees &amp; projects</dt>
+                  <dd id="gate-trees">—</dd>
+                </div>
+              </dl>
+            </article>
+
+            <p class="gate-note">
+              Want to suggest a Gate or send a source? You can always reach out
+              through the <a href="/contact/">contact page</a>.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <!-- ROADMAP SECTION -->
+      <section class="gates-roadmap">
+        <div class="container">
+          <h2>Roadmap: from grid to star-map</h2>
+          <ol class="roadmap-list">
+            <li>
+              <strong>Stage 1 — This page.</strong>
+              A small grid of Gates with hand-written notes, wired to a simple
+              detail panel.
+            </li>
+            <li>
+              <strong>Stage 2 — Full grid of 231 Gates.</strong>
+              Every pairing appears as a clickable node, with tags for letters,
+              sefirot, and Trees.
+            </li>
+            <li>
+              <strong>Stage 3 — Star-field view.</strong>
+              Gates plotted as a constellation, where you can wander paths or
+              filter by sefirah, Tree, or project.
+            </li>
+            <li>
+              <strong>Stage 4 — Sources under each Gate.</strong>
+              Each Gate links into the Library and Sefaria with relevant
+              texts, commentaries, and project notes.
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-brand">
+          LuminaNexus.org · The Quantum Etz Chaim &amp; the Celestial Library of
+          the 231 Gates
+        </p>
+        <p class="footer-meta">
+          © <span id="year"></span> LuminaNexus. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // tiny helper to keep the year up to date
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="./gates.js"></script>
+  </body>
+</html>
