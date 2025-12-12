@@ -3,13 +3,13 @@
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // you can lock this to https://luminanexus.org later
+  'Access-Control-Allow-Origin': '*', // later you can lock this to https://luminanexus.org
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
 exports.handler = async (event) => {
-  // Handle CORS preflight
+  // CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -47,30 +47,22 @@ exports.handler = async (event) => {
       };
     }
 
-    // Build chat-style messages for the Chat Completions API
     const messages = [
       {
         role: 'system',
         content:
           "You are ChavrutaGPT, a warm, thoughtful Torah study partner created for LuminaNexus.org. " +
-          "You are not a posek and you never give halachic rulings. " +
-          "You help users explore texts, ideas, and mefarshim in clear, gentle language, " +
-          "and you often suggest following up with teachers, rabbanim, or trusted experts. " +
-          "Keep answers grounded, cite classic sources when possible, and stay concise but kind.",
+          "You are not a posek and never give halachic rulings. " +
+          "You help users explore texts and ideas in clear, gentle language, " +
+          "cite classic sources when possible, and often suggest asking real-world teachers or rabbanim.",
       },
-      // prior conversation
       ...history.map((m) => ({
         role: m.role === 'assistant' ? 'assistant' : 'user',
         content: String(m.content || ''),
       })),
-      // latest user turn
-      {
-        role: 'user',
-        content: latestUserText,
-      },
+      { role: 'user', content: latestUserText },
     ];
 
-    // Call OpenAI Chat Completions API
     const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -78,7 +70,7 @@ exports.handler = async (event) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4.1-mini', // or gpt-4o-mini if you prefer
+        model: 'gpt-4.1-mini', // you can swap to gpt-4o-mini if you like
         messages,
         temperature: 0.6,
         max_tokens: 800,
@@ -102,10 +94,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers: {
-        ...corsHeaders,
-        'Content-Type': 'application/json',
-      },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       body: JSON.stringify({ reply }),
     };
   } catch (err) {
