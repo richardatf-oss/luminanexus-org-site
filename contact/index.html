@@ -2,172 +2,161 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Contact – LuminaNexus</title>
+    <title>Contact | LuminaNexus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Get in touch with LuminaNexus.org about projects, learning, or ways to help build this field of light."
+      content="Get in touch with LuminaNexus.org about projects, sefarim, or ideas for the Quantum Etz Chaim."
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body class="page-contact">
+  <body>
     <!-- HEADER / NAV -->
     <header class="site-header">
-      <div class="container header-inner">
+      <div class="container nav">
         <a href="/" class="brand">
           <span class="brand-mark">LN</span>
-          <span class="brand-text">
-            <span class="brand-name">LuminaNexus</span>
-            <span class="brand-tagline">Light-linked learning</span>
-          </span>
+          <span class="brand-text">LuminaNexus</span>
+          <span class="brand-tagline">Light-linked learning</span>
         </a>
 
-        <nav class="site-nav" aria-label="Main navigation">
+        <nav class="nav-links">
           <a href="/" class="nav-link">Mission</a>
           <a href="/trees/" class="nav-link">Trees</a>
           <a href="/projects/" class="nav-link">Projects</a>
           <a href="/library/" class="nav-link">Library</a>
           <a href="/chavruta/" class="nav-link">Chavruta</a>
-          <a href="/get-involved/" class="nav-link">Get involved</a>
-          <a href="/contact/" class="nav-link nav-link-outline nav-link-active"
-            >Contact</a
-          >
+          <a href="/contact/" class="nav-link nav-link-active">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main class="site-main">
-      <section class="section-contact">
-        <div class="container contact-grid">
-          <!-- Left: copy / explanation -->
-          <div class="contact-copy">
-            <p class="eyebrow">Get in touch</p>
-            <h1>Contact LuminaNexus</h1>
-            <p class="lead">
-              LuminaNexus.org is a small, growing nexus of Torah, creativity, and
-              technology. If you’d like to learn more, help with a project, or
-              just say “shalom,” you can reach out here.
+    <main>
+      <!-- CONTACT HERO -->
+      <section class="hero hero-subpage">
+        <div class="container hero-layout">
+          <div class="hero-primary">
+            <p class="eyebrow">Reach out</p>
+            <h1>Contact LuminaNexus.org</h1>
+            <p class="hero-lead">
+              Questions about the Quantum Etz Chaim, a Sefer in the Library,
+              ChavrutaGPT, or a new project idea? Send a note and we’ll read it
+              with care.
             </p>
+          </div>
 
-            <div class="contact-info-card">
-              <h2>Direct email</h2>
+          <div class="hero-badge">
+            <div class="orb orb-aleph">
+              <span class="orb-letter">✉︎</span>
+            </div>
+            <p class="hero-badge-caption">
+              Letters as small sparks in a larger Field of light.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM + INFO -->
+      <section class="section">
+        <div class="container">
+          <div class="cards-grid contact-grid">
+            <!-- Netlify form card -->
+            <article class="card contact-card">
+              <h2>Send a message</h2>
               <p>
-                You can always write to:
+                This form is powered by Netlify. Your note will be sent to the
+                LuminaNexus team at <strong>luminanexus@yahoo.com</strong>.
+              </p>
+
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+              >
+                <!-- Hidden form-name for Netlify -->
+                <input type="hidden" name="form-name" value="contact" />
+
+                <!-- Honeypot field (for spam bots) -->
+                <p class="hidden">
+                  <label>
+                    Don’t fill this out:
+                    <input name="bot-field" />
+                  </label>
+                </p>
+
+                <label class="form-field">
+                  <span>Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    autocomplete="name"
+                    required
+                  />
+                </label>
+
+                <label class="form-field">
+                  <span>Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                  />
+                </label>
+
+                <label class="form-field">
+                  <span>Subject</span>
+                  <input type="text" name="subject" />
+                </label>
+
+                <label class="form-field">
+                  <span>Message</span>
+                  <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Share your question, idea, or bracha…"
+                    required
+                  ></textarea>
+                </label>
+
+                <button type="submit" class="button-primary">
+                  Send message
+                </button>
+              </form>
+            </article>
+
+            <!-- Side info card -->
+            <article class="card contact-info">
+              <h2>What to write about</h2>
+              <ul class="card-list">
+                <li>Ideas for new Trees or Sefer-projects.</li>
+                <li>
+                  Questions about how ChavrutaGPT, the Library, or Sefaria
+                  gateway work.
+                </li>
+                <li>
+                  Invitations to collaborate, teach, learn, or build something
+                  in the Field of light.
+                </li>
+              </ul>
+
+              <h3>Halachic note</h3>
+              <p class="card-meta">
+                LuminaNexus and ChavrutaGPT do not give
+                <em>psak halacha</em>, medical advice, or financial advice.
+                Always check with real-world teachers and experts.
+              </p>
+
+              <h3>Direct email</h3>
+              <p>
+                Prefer to write directly? You can email:
                 <br />
-                <a href="mailto:luminanexus@yahoo.com" class="contact-email"
+                <a href="mailto:luminanexus@yahoo.com"
                   >luminanexus@yahoo.com</a
                 >
               </p>
-              <p class="contact-note">
-                This form below also sends your note to the same inbox through
-                Netlify’s form system.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right: Netlify form -->
-          <div class="contact-form-card">
-            <h2>Send a message</h2>
-
-            <!--
-              Netlify form:
-              - name="contact"
-              - method="POST"
-              - data-netlify="true"
-              - honeypot field for spam
-            -->
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-            >
-              <!-- Netlify form-name (required when using HTML forms) -->
-              <input type="hidden" name="form-name" value="contact" />
-
-              <!-- Honeypot field (hidden from real users) -->
-              <p class="hidden-field">
-                <label>
-                  Don’t fill this out:
-                  <input name="bot-field" />
-                </label>
-              </p>
-
-              <div class="field-group">
-                <label class="field-label" for="name">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  class="field-input"
-                  autocomplete="name"
-                  required
-                />
-              </div>
-
-              <div class="field-group">
-                <label class="field-label" for="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  class="field-input"
-                  autocomplete="email"
-                  required
-                />
-              </div>
-
-              <div class="field-group">
-                <label class="field-label" for="topic">
-                  How are you hoping to connect?
-                </label>
-                <select
-                  id="topic"
-                  name="topic"
-                  class="field-input"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Choose one…
-                  </option>
-                  <option value="learning">
-                    Learning / questions about Torah &amp; projects
-                  </option>
-                  <option value="collaboration">
-                    Collaboration on a project or idea
-                  </option>
-                  <option value="support">
-                    Donations, sponsorship, or other support
-                  </option>
-                  <option value="technical">
-                    Technical help, apps, or website feedback
-                  </option>
-                  <option value="other">Something else</option>
-                </select>
-              </div>
-
-              <div class="field-group">
-                <label class="field-label" for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  class="field-input"
-                  placeholder="Share as much detail as you like. For example: which Tree or project you’re drawn to, or how you’d like to help."
-                  required
-                ></textarea>
-              </div>
-
-              <div class="field-group">
-                <button type="submit" class="btn btn-primary">
-                  Send message
-                </button>
-                <p class="field-help">
-                  You should receive a confirmation at the email you provide once
-                  your message is received.
-                </p>
-              </div>
-            </form>
+            </article>
           </div>
         </div>
       </section>
@@ -180,17 +169,18 @@
           LuminaNexus.org · a small nexus of light-linked projects
         </p>
         <p class="footer-meta">
-          <span id="year"></span> LuminaNexus. All rights reserved.
+          © <span id="year"></span> LuminaNexus. All rights reserved.
         </p>
       </div>
     </footer>
 
     <script>
-      // Set current year in footer
-      (function () {
-        var y = document.getElementById("year");
-        if (y) y.textContent = new Date().getFullYear();
-      })();
+      // Simple year updater for the footer
+      const yearSpan = document.getElementById("year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
     </script>
+    <script src="../script.js"></script>
   </body>
 </html>
