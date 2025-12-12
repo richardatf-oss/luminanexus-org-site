@@ -1,178 +1,101 @@
-// chavruta/chavruta.js
-// Simple chat UI + voice input/output for ChavrutaGPT
+// /chavruta/chavruta.js
 
-const API_ENDPOINT = "/api/chavruta"; // adjust if your backend lives elsewhere
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('user-input');
+  const chatLog = document.getElementById('chat-log');
+  const clearButton = document.getElementById('clear-button');
 
-document.addEventListener("DOMContentLoaded", () => {
-  const chatLog = document.getElementById("chat-log");
-  const chatForm = document.getElementById("chat-form");
-  const chatInput = document.getElementById("chat-input");
-  const clearChatBtn = document.getElementById("clear-chat");
-  const statusEl = document.getElementById("chat-status");
-  const voiceInputBtn = document.getElementById("voice-input-toggle");
-  const voiceOutputBtn = document.getElementById("voice-output-toggle");
+  // Simple in-page history (user + assistant only)
+  const history = [];
 
-  let voiceOutputEnabled = false;
-  let recognition = null;
-  let recognizing = false;
-
-  // Helper: append message
   function appendMessage(role, text) {
-    const wrapper = document.createElement("div");
-    wrapper.className =
-      role === "assistant"
-        ? "chat-message chat-message-assistant"
-        : "chat-message chat-message-user";
+    const wrapper = document.createElement('div');
+    wrapper.className = `chat-message chat-message--${role}`;
 
-    const bubble = document.createElement("div");
-    bubble.className = "chat-bubble";
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
     bubble.textContent = text;
 
     wrapper.appendChild(bubble);
     chatLog.appendChild(wrapper);
     chatLog.scrollTop = chatLog.scrollHeight;
 
-    if (role === "assistant") {
-      speak(text);
+    if (role === 'user' || role === 'assistant') {
+      history.push({ role, content: text });
     }
+
+    return bubble;
   }
 
-  // Helper: set status text
-  function setStatus(message) {
-    if (!statusEl) return;
-    statusEl.textContent = message || "";
+  function setLoading(bubble, isLoading) {
+    if (!bubble) return;
+    bubble.classList.toggle('chat-bubble--loading', isLoading);
   }
 
-  // Voice output (text-to-speech)
-  function speak(text) {
-    if (!voiceOutputEnabled) return;
-    if (!("speechSynthesis" in window)) {
-      console.warn("SpeechSynthesis not supported in this browser.");
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-  }
+  async function sendToChavruta(userText) {
+    const loadingBubble = appendMessage('assistant', 'Thinking…');
+    setLoading(loadingBubble, true);
 
-  // Toggle voice output
-  if (voiceOutputBtn) {
-    voiceOutputBtn.addEventListener("click", () => {
-      voiceOutputEnabled = !voiceOutputEnabled;
-      voiceOutputBtn.textContent = voiceOutputEnabled ? "🔊 Voice on" : "🔊 Voice off";
-    });
-  }
+    try {
+      const res = await fetch('/.netlify/functions/chavruta', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          latestUserText: userText,
+          history,
+        }),
+      });
 
-  // Voice input (speech-to-text)
-  function initRecognition() {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      console.warn("SpeechRecognition not supported in this browser.");
-      setStatus("Voice input not supported in this browser.");
-      return null;
-    }
-    const rec = new SpeechRecognition();
-    rec.lang = "en-US";
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
-    return rec;
-  }
-
-  if (voiceInputBtn) {
-    voiceInputBtn.addEventListener("click", () => {
-      if (!recognition) {
-        recognition = initRecognition();
-        if (!recognition) return;
-
-        recognition.addEventListener("result", (event) => {
-          const transcript = Array.from(event.results)
-            .map((r) => r[0].transcript)
-            .join(" ");
-          if (transcript) {
-            chatInput.value = transcript;
-            chatInput.focus();
-          }
-        });
-
-        recognition.addEventListener("start", () => {
-          recognizing = true;
-          setStatus("Listening…");
-          voiceInputBtn.textContent = "🎙️ Stop listening";
-        });
-
-        recognition.addEventListener("end", () => {
-          recognizing = false;
-          setStatus("");
-          voiceInputBtn.textContent = "🎙️ Voice input";
-        });
-
-        recognition.addEventListener("error", (e) => {
-          console.error("Voice error:", e);
-          recognizing = false;
-          setStatus("Voice input error.");
-          voiceInputBtn.textContent = "🎙️ Voice input";
-        });
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
       }
 
-      if (!recognizing) {
-        try {
-          recognition.start();
-        } catch (e) {
-          console.error(e);
-        }
-      } else {
-        recognition.stop();
+      const data = await res.json();
+      const reply = (data.reply || '').trim();
+
+      loadingBubble.textContent = reply || 'Sorry, no response came back.';
+      setLoading(loadingBubble, false);
+
+      if (reply) {
+        history.push({ role: 'assistant', content: reply });
       }
-    });
+    } catch (err) {
+      console.error('Chavruta client error:', err);
+      loadingBubble.textContent =
+        'Sorry, something went wrong talking to ChavrutaGPT. Please try again.';
+      setLoading(loadingBubble, false);
+    }
   }
 
   // Handle form submit
-  if (chatForm) {
-    chatForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const message = (chatInput.value || "").trim();
-      if (!message) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
 
-      appendMessage("user", message);
-      chatInput.value = "";
-      setStatus("Asking ChavrutaGPT…");
+    appendMessage('user', text);
+    input.value = '';
+    sendToChavruta(text);
+  });
 
-      try {
-        const response = await fetch(API_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        const answer = data.answer || data.message || "[No answer received]";
-        appendMessage("assistant", answer);
-        setStatus("");
-      } catch (error) {
-        console.error(error);
-        appendMessage(
-          "assistant",
-          "There was a problem reaching the Chavruta backend. Please try again later."
-        );
-        setStatus("Error talking to backend.");
-      }
+  // Clear button
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      chatLog.innerHTML = '';
+      history.length = 0;
+      appendMessage(
+        'assistant',
+        "Shalom, haver. I'm ChavrutaGPT—your learning partner. What would you like to explore today?"
+      );
     });
   }
 
-  // Clear chat
-  if (clearChatBtn) {
-    clearChatBtn.addEventListener("click", () => {
-      chatLog.innerHTML = "";
-      appendMessage(
-        "assistant",
-        "Chat cleared. What would you like to explore now?"
-      );
-    });
+  // Initial greeting if log is empty
+  if (!chatLog.hasChildNodes()) {
+    appendMessage(
+      'assistant',
+      "Shalom, haver. I'm ChavrutaGPT—your learning partner. What would you like to explore today?"
+    );
   }
 });
