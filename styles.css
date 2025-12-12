@@ -684,3 +684,260 @@ p {
 .chavruta-chat-shell {
   margin: 0;
 }
+/* ================================
+   231 Gates page
+   ================================ */
+
+.gates-main {
+  padding-bottom: 4rem;
+}
+
+.gates-hero {
+  padding: 4rem 0 2rem;
+}
+
+.gates-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .gates-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.gates-hero-copy h1 {
+  font-size: clamp(2.4rem, 3vw + 1.4rem, 3.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.gates-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 40rem;
+  color: var(--ln-text-muted, #cbd5f5);
+}
+
+.gates-hero-math {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--ln-accent-soft, #fcae70);
+}
+
+/* Orb */
+
+.gates-hero-orb {
+  text-align: center;
+}
+
+.gates-orb-shell {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 0.75rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gates-orb-ring {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gates-orb-ring-lg {
+  width: 100%;
+  height: 100%;
+}
+
+.gates-orb-ring-md {
+  width: 75%;
+  height: 75%;
+}
+
+.gates-orb-ring-sm {
+  width: 50%;
+  height: 50%;
+}
+
+.gates-orb-core {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, #ffe6b0, #ff8b33);
+  box-shadow:
+    0 0 0 10px rgba(255, 140, 51, 0.08),
+    0 0 40px rgba(255, 160, 80, 0.5);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.gates-orb-caption {
+  font-size: 0.85rem;
+  color: var(--ln-text-muted, #a7b4dd);
+}
+
+/* Layout */
+
+.gates-layout {
+  padding: 2rem 0 1rem;
+}
+
+.gates-layout-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 960px) {
+  .gates-layout-inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  }
+}
+
+.gates-explainer p {
+  margin-bottom: 0.75rem;
+}
+
+.gates-bullets {
+  margin: 0.5rem 0 0.75rem;
+  padding-left: 1.3rem;
+  font-size: 0.95rem;
+}
+
+/* Interactive card */
+
+.gates-interactive-header p {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--ln-text-muted, #cbd5f5);
+}
+
+.gate-pill-grid {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gate-pill {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5edff;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.3);
+  transition:
+    background 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    transform 0.12s ease-out;
+}
+
+.gate-pill:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(251, 146, 60, 0.7),
+    0 12px 30px rgba(15, 23, 42, 0.8);
+}
+
+.gate-pill-active {
+  background: radial-gradient(circle at 30% 20%, #ffdfaa, #ff8b33);
+  color: #111827;
+  box-shadow:
+    0 0 0 1px rgba(248, 250, 252, 0.9),
+    0 14px 35px rgba(15, 23, 42, 0.9);
+}
+
+/* Detail card */
+
+.gate-detail-card {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), rgba(15, 23, 42, 0.95));
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+}
+
+.gate-detail-header {
+  margin-bottom: 0.4rem;
+}
+
+.gate-detail-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ln-text-muted, #9ca3c9);
+}
+
+.gate-summary {
+  font-size: 0.95rem;
+  color: var(--ln-text-muted, #cbd5f5);
+  margin-bottom: 0.75rem;
+}
+
+.gate-meta {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.gate-meta-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 0.4rem 0.75rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.gate-meta-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.gate-meta-row dt {
+  color: var(--ln-text-muted, #9ca3c9);
+}
+
+.gate-meta-row dd {
+  margin: 0;
+}
+
+.gate-note {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--ln-text-muted, #9ca3c9);
+}
+
+/* Roadmap */
+
+.gates-roadmap {
+  padding: 1.5rem 0 3rem;
+}
+
+.gates-roadmap h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.roadmap-list {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  color: var(--ln-text-muted, #cbd5f5);
+}
+
+.roadmap-list li + li {
+  margin-top: 0.45rem;
+}
