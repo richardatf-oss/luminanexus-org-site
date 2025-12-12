@@ -1,4 +1,4 @@
-/* ===== Base ====================================================== */
+/* ============= Base ============================================ */
 
 *,
 *::before,
@@ -54,7 +54,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.1rem, 3vw + 1.4rem, 2.9rem);
+  font-size: clamp(2.2rem, 3vw + 1.5rem, 3.1rem);
   line-height: 1.1;
 }
 
@@ -72,13 +72,13 @@ p {
 }
 
 .eyebrow {
-  font-size: 0.82rem;
-  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #a9b4cf;
 }
 
-/* ===== Header ==================================================== */
+/* ============= Header ========================================== */
 
 .site-header {
   position: sticky;
@@ -87,11 +87,11 @@ p {
   backdrop-filter: blur(12px);
   background: linear-gradient(
     to bottom,
-    rgba(3, 8, 20, 0.9),
-    rgba(3, 8, 20, 0.75),
+    rgba(3, 8, 20, 0.94),
+    rgba(3, 8, 20, 0.8),
     transparent
   );
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .header-inner {
@@ -106,7 +106,6 @@ p {
   align-items: center;
   gap: 0.55rem;
   color: inherit;
-  text-decoration: none;
 }
 
 .brand-mark {
@@ -157,7 +156,7 @@ p {
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 180, 100, 0.7);
-  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.18), transparent);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.15), transparent);
 }
 
 /* Mobile nav toggle */
@@ -187,7 +186,7 @@ p {
     top: 56px;
     padding: 0.75rem 1.5rem 1rem;
     background: radial-gradient(circle at top, #151b2a, #050713);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
@@ -208,17 +207,17 @@ p {
   }
 }
 
-/* ===== Hero ====================================================== */
+/* ============= Hero ============================================ */
 
 .hero {
-  padding: 3.2rem 0 2.6rem;
+  padding: 3.2rem 0 2.4rem;
 }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.9fr) minmax(0, 0.9fr);
-  align-items: flex-start;
-  gap: 2.4rem;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2.6rem;
 }
 
 .hero-subtitle {
@@ -250,7 +249,6 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
   padding: 0.45rem 1.1rem;
   border-radius: 999px;
   font-size: 0.86rem;
@@ -278,38 +276,37 @@ p {
 }
 
 .btn-outline {
-  border-color: rgba(255, 180, 100, 0.8);
+  border-color: rgba(255, 180, 100, 0.85);
   color: #ffddb0;
-  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.12), transparent);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.16), transparent);
 }
 
 .btn-outline:hover {
-  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.22), transparent);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 179, 71, 0.23), transparent);
 }
 
 .btn-ghost {
   border-color: rgba(174, 183, 224, 0.35);
   color: #d0d7f5;
-  background: rgba(7, 11, 26, 0.75);
+  background: rgba(7, 11, 26, 0.8);
 }
 
 .btn-ghost:hover {
-  background: rgba(19, 26, 46, 0.95);
+  background: rgba(19, 26, 46, 0.98);
 }
 
-/* Hero orb – small, upper-right */
+/* Hero orb */
 
 .hero-orbit {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.7rem;
-  padding-top: 0.4rem;
 }
 
 .orbit {
   position: relative;
-  width: 180px;
+  width: 210px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: flex;
@@ -325,50 +322,30 @@ p {
 }
 
 .orbit-ring-2 {
-  inset: 14%;
+  inset: 15%;
   border-style: dashed;
   opacity: 0.6;
 }
 
 .orbit-core {
   position: relative;
-  width: 62%;
+  width: 64%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d);
+  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d 70%, #c14424 100%);
   box-shadow:
-    0 0 26px rgba(255, 148, 90, 0.7),
-    0 0 80px rgba(255, 148, 90, 0.35);
+    0 0 26px rgba(255, 148, 90, 0.75),
+    0 0 80px rgba(255, 148, 90, 0.4);
   color: #050713;
 }
 
-.orbit-core--flame {
-  overflow: hidden;
-}
-
-/* Fallback gradient if image is missing */
-.orbit-core--flame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 20%, #ffb347, #ff6a3d 70%, #c14424 100%);
-  opacity: 0.95;
-}
-
-.orbit-aleph-image {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 50%;
-  object-fit: cover;
-  filter: saturate(1.3) contrast(1.1);
-  mix-blend-mode: screen;
+.orbit-aleph {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .orbit-caption {
@@ -378,10 +355,35 @@ p {
   max-width: 12rem;
 }
 
+/* Hero Quantum Etz Chaim card */
+
+.hero-qec {
+  margin-top: 2.4rem;
+}
+
+.hero-qec-card {
+  border-radius: 1rem;
+  padding: 1.2rem 1.4rem;
+  max-width: 640px;
+  background: radial-gradient(circle at top left, #1f2538, #080b17);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+.hero-qec-card h2 {
+  margin-bottom: 0.3rem;
+}
+
+.hero-qec-card p {
+  color: #d2d8f4;
+}
+
+/* Responsive hero */
+
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: minmax(0, 1fr);
-    gap: 2.3rem;
+    gap: 2.4rem;
   }
 
   .hero-orbit {
@@ -390,7 +392,7 @@ p {
   }
 }
 
-/* ===== Sections & cards ========================================== */
+/* ============= Generic sections & cards ======================== */
 
 .section {
   padding: 3.1rem 0;
@@ -398,7 +400,7 @@ p {
 
 .section-alt {
   padding: 3.1rem 0;
-  background: radial-gradient(circle at top, rgba(19, 24, 43, 0.95), rgba(6, 9, 24, 0.98));
+  background: radial-gradient(circle at top, rgba(19, 24, 43, 0.96), rgba(6, 9, 24, 0.98));
 }
 
 .section-header {
@@ -411,8 +413,10 @@ p {
   color: #c3c9e7;
 }
 
-.section-header--split {
-  text-align: left;
+/* Mission variant */
+
+.section-mission {
+  padding-top: 2.4rem;
 }
 
 /* Cards */
@@ -432,7 +436,7 @@ p {
   padding: 1.1rem 1.3rem;
   background: radial-gradient(circle at top left, #1f2538, #080b17);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card p {
@@ -444,11 +448,11 @@ p {
   color: #ffddb0;
 }
 
-/* ===== Footer ==================================================== */
+/* ============= Footer ========================================== */
 
 .site-footer {
   padding: 2.4rem 0 2.6rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   background: #040612;
 }
 
@@ -467,7 +471,7 @@ p {
   color: #8f9ac3;
 }
 
-/* ===== Responsive tweaks ========================================= */
+/* ============= Responsive tweaks ================================ */
 
 @media (max-width: 640px) {
   .container {
