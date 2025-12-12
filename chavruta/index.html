@@ -1,161 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChavrutaGPT | LuminaNexus.org</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChavrutaGPT – LuminaNexus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="ChavrutaGPT is a small AI learning partner from LuminaNexus.org – helping you explore Torah, sugyot, and ideas with care and curiosity."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="page-chavruta">
+    <!-- HEADER / NAV -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="brand">
+          <span class="brand-mark">LN</span>
+          <span class="brand-text">
+            <span class="brand-name">LuminaNexus</span>
+            <span class="brand-tagline">Light-linked learning</span>
+          </span>
+        </a>
 
-  <link rel="stylesheet" href="/styles.css" />
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/" class="nav-link">Mission</a>
+          <a href="/trees/" class="nav-link">Trees</a>
+          <a href="/projects/" class="nav-link">Projects</a>
+          <a href="/library/" class="nav-link">Library</a>
+          <a href="/chavruta/" class="nav-link nav-link-active">Chavruta</a>
+          <a href="/get-involved/" class="nav-link">Get involved</a>
+          <a href="/contact/" class="nav-link nav-link-outline">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Shared site script (nav, footer year, etc.) -->
-  <script src="/script.js" defer></script>
-  <!-- Chavruta chat wiring -->
-  <script src="/chavruta/chavruta.js" defer></script>
-</head>
-
-<body class="chavruta-page">
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand">
-        <span class="brand-mark">LN</span>
-        <span class="brand-text">
-          <span class="brand-name">LuminaNexus</span>
-          <span class="brand-tagline">Light-linked learning</span>
-        </span>
-      </a>
-
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="site-nav">
-        <a href="/#mission">Mission</a>
-        <a href="/#trees">Trees</a>
-        <a href="/#projects">Projects</a>
-        <a href="/library/">Library</a>
-        <a href="/chavruta/" class="nav-current">Chavruta</a>
-        <a href="/#get-involved">Get involved</a>
-        <a href="/#contact" class="nav-cta">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="chavruta-main">
-    <!-- ONE TOP SECTION: INTRO + CHAT SIDE BY SIDE -->
-    <section class="section chavruta-top">
-      <div class="container chavruta-top-layout">
-        <!-- Left: short intro + disclaimer -->
-        <div class="chavruta-intro">
+    <main class="site-main">
+      <!-- MAIN CHAVRUTA SECTION (chat is prominent) -->
+      <section class="section-chavruta">
+        <div class="container">
           <p class="eyebrow">Experiment in Torah &amp; AI</p>
-          <h1>Chat with ChavrutaGPT</h1>
-          <p class="hero-subtitle">
-            A small AI learning partner to help you frame questions, explore
-            sugyot, and connect sources with care and curiosity. Never a posek,
-            always a study partner.
-          </p>
-          <p class="chavruta-disclaimer">
-            Please do not treat responses as psak halacha, or as medical, legal,
-            or financial advice. Always check with real-world teachers and experts.
-          </p>
-        </div>
 
-        <!-- Right: the chat shell, right up top -->
-        <div class="chavruta-chat-shell" id="chavruta-chat">
-          <!-- Chat history -->
-          <div class="chavruta-chat-history" id="chat-log">
-            <div class="chat-bubble chat-bubble-system">
-              Shalom, haver. I’m ChavrutaGPT—an AI learning partner created
-              through LuminaNexus. What would you like to explore today?
+          <div class="chavruta-header">
+            <div class="chavruta-heading">
+              <h1>Chat with ChavrutaGPT</h1>
+              <p class="lead">
+                A small AI learning partner from LuminaNexus.org. ChavrutaGPT
+                cannot replace a teacher, rav, or real chavruta—but it can help
+                you frame questions, explore sugyot, and connect sources with
+                care and curiosity.
+              </p>
+              <p class="hint">
+                No psak halacha. Always check with real teachers and primary
+                texts for halachic guidance.
+              </p>
             </div>
-            <div class="chat-bubble chat-bubble-user">
-              Hi ChavrutaGPT! It’s great to connect with you. What text do you
-              have in mind for us to explore together?
-            </div>
-            <div class="chat-bubble chat-bubble-system">
-              Psalm 32 is a beautiful reflection on the themes of forgiveness
-              and the joy of a clear conscience. Let’s take a moment to unpack
-              it together…
+
+            <div class="chavruta-orbit">
+              <div class="hero-orbit hero-orbit-small">
+                <div class="hero-orbit-glow">
+                  <span class="hero-orbit-letter">ן</span>
+                </div>
+              </div>
+              <p class="hero-orbit-caption">
+                Two voices, one Tree of Life. AI as helper, not posek.
+              </p>
             </div>
           </div>
 
-          <!-- Input area -->
-          <label for="chavruta-input" class="chavruta-input-label">
-            Your question or comment
-          </label>
-          <textarea
-            id="chavruta-input"
-            class="chavruta-input"
-            placeholder='For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on Genesis 1:1,” or “Explain tzimtzum using modern physics.”'
-          ></textarea>
+          <!-- Chat + “How it works” side by side -->
+          <div class="chavruta-grid">
+            <!-- CHAT CARD -->
+            <article class="card card-chat" aria-label="ChavrutaGPT chat">
+              <h2 class="card-title">Your chavruta session</h2>
 
-          <div class="chavruta-actions">
-            <button id="chavruta-send" class="btn btn-primary" type="button">
-              Send to chavruta
-            </button>
-            <button id="chavruta-clear" class="btn btn-ghost" type="button">
-              Clear
-            </button>
-            <button id="voice-on" class="btn btn-ghost btn-pill" type="button" disabled>
-              Voice input (coming soon)
-            </button>
-            <button id="voice-off" class="btn btn-ghost btn-pill" type="button" disabled>
-              Voice off
-            </button>
+              <!-- Chat history -->
+              <div
+                id="chavruta-history"
+                class="chavruta-history"
+                aria-live="polite"
+              ></div>
+
+              <!-- Input -->
+              <label class="field-label" for="chavruta-input">
+                Your question or comment
+              </label>
+              <textarea
+                id="chavruta-input"
+                class="chavruta-input"
+                rows="4"
+                placeholder='For example: “Help me with Berakhot 2a,” “Compare Rashi and Ramban on Genesis 1:1,” or “Explain tzimtzum using modern physics.”'
+              ></textarea>
+
+              <!-- Controls -->
+              <div class="chavruta-actions">
+                <button
+                  id="chavruta-send"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Send to chavruta
+                </button>
+                <button
+                  id="chavruta-clear"
+                  type="button"
+                  class="btn btn-ghost"
+                >
+                  Clear
+                </button>
+              </div>
+
+              <p
+                id="chavruta-status"
+                class="chavruta-status"
+                aria-live="polite"
+              >
+                ChavrutaGPT ready.
+              </p>
+            </article>
+
+            <!-- “HOW IT WORKS” CARD -->
+            <article class="card card-how-it-works">
+              <h2 class="card-title">How this chavruta works</h2>
+              <p>
+                ChavrutaGPT is designed to feel like sitting with a learning
+                partner under the Quantum Etz Chaim. It can:
+              </p>
+              <ul class="card-list">
+                <li>Help you summarize a sugya or perek in simple language.</li>
+                <li>
+                  Compare classic mefarshim on a pasuk or topic (Rashi, Ramban,
+                  Sforno, Netziv, etc.).
+                </li>
+                <li>
+                  Suggest metaphors that connect Torah, science, and daily life.
+                </li>
+                <li>
+                  Help you draft questions and ideas to bring to a live chavruta
+                  or rav.
+                </li>
+              </ul>
+              <p>
+                Responses are generated by AI. Treat them as
+                <strong>starting points for learning</strong>, not as final
+                answers.
+              </p>
+            </article>
           </div>
-
-          <!-- Live status line -->
-          <p id="chavruta-status" class="chavruta-status"></p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Guidance cards below the fold -->
-    <section class="section section-alt chavruta-guides-section">
-      <div class="container">
-        <div class="cards-grid chavruta-guides">
+      <!-- LOWER GUIDANCE CARDS -->
+      <section class="section-chavruta-guides">
+        <div class="container cards-grid">
+          <!-- Good ways to use -->
           <article class="card">
-            <h2>Good ways to use ChavrutaGPT</h2>
-            <ul>
-              <li>Summarize a sugya or perek in simple language.</li>
-              <li>Compare classic mefarshim on a pasuk.</li>
-              <li>Ask for metaphors that connect Torah and physics.</li>
-              <li>Draft questions to bring to a live chavruta or rav.</li>
+            <h3>Good ways to use ChavrutaGPT</h3>
+            <ul class="card-list">
+              <li>Summarize a sugya or perek in clear, simple language.</li>
+              <li>
+                Ask how different mefarshim read the same verse or concept.
+              </li>
+              <li>
+                Explore how ideas in Kabbalah or Chassidus might echo modern
+                physics (without overclaiming).
+              </li>
+              <li>
+                Draft divrei Torah, questions, or shiur outlines that you’ll
+                later refine with real teachers.
+              </li>
             </ul>
           </article>
 
+          <!-- Limits & boundaries -->
           <article class="card">
-            <h2>Limits &amp; boundaries</h2>
-            <ul>
-              <li>No real psak halacha.</li>
-              <li>May make mistakes or oversimplify sources.</li>
-              <li>May not reflect all views or minhagim.</li>
-              <li>Always check primary texts and teachers.</li>
+            <h3>Limits &amp; boundaries</h3>
+            <ul class="card-list">
+              <li><strong>No psak halacha.</strong></li>
+              <li>
+                May miss nuances or reflect only some shittot or minhagim.
+              </li>
+              <li>
+                Sources may be paraphrased; always check the original sefer.
+              </li>
+              <li>
+                For life decisions (medical, legal, financial, or halachic),
+                consult qualified humans.
+              </li>
             </ul>
           </article>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">
-        LuminaNexus.org · ChavrutaGPT experiment in AI-assisted learning
-      </p>
-      <p class="footer-meta">
-        © <span id="year"></span> LuminaNexus. All rights reserved.
-      </p>
-    </div>
-  </footer>
-</body>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-brand">
+          LuminaNexus.org · ChavrutaGPT experiment in AI-assisted learning
+        </p>
+        <p class="footer-meta">
+          <span id="year"></span> LuminaNexus. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/chavruta/chavruta.js"></script>
+    <script>
+      // set current year in footer
+      (function () {
+        var y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
 </html>
