@@ -658,3 +658,29 @@ p {
     justify-content: flex-start;
   }
 }
+/* Chavruta page layout tweaks */
+.chavruta-page main {
+  padding-top: 4.5rem;
+}
+
+.chavruta-top {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.chavruta-top-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .chavruta-top-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.chavruta-chat-shell {
+  margin: 0;
+}
