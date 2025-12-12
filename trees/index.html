@@ -3,130 +3,496 @@
   <head>
     <meta charset="UTF-8" />
     <title>Trees of the Quantum Etz Chaim | LuminaNexus</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Explore the Trees of the Quantum Etz Chaim: Origin, Stone, Mirrors, Snow, Water, Fire, Song, and more."
+      content="The first named Trees of the Quantum Etz Chaim: Origin, Stone, Mirrors, Snow, Water, Fire, Song, and more—branches of one living Field."
     />
-    <link rel="stylesheet" href="../styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Global site styles -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+      :root {
+        --ln-bg: #050816;
+        --ln-bg-soft: #0b1220;
+        --ln-card: #0f172a;
+        --ln-accent: #f97316;
+        --ln-accent-soft: #fed7aa;
+        --ln-text: #e5e7eb;
+        --ln-muted: #9ca3af;
+        --ln-border-soft: rgba(148, 163, 184, 0.35);
+        --ln-shadow-soft: 0 28px 80px rgba(15, 23, 42, 0.95);
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(circle at top, #020617, #020617 40%, #000);
+        color: var(--ln-text);
+        min-height: 100vh;
+      }
+
+      .ln-shell {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2.2rem 1.5rem 3rem;
+      }
+
+      /* Header / nav (matches other new pages) */
+
+      .ln-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: 2.2rem;
+      }
+
+      .ln-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        text-decoration: none;
+        color: var(--ln-text);
+      }
+
+      .ln-brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 20%, #fef3c7, #f97316);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #111827;
+      }
+
+      .ln-brand-text {
+        font-weight: 600;
+        font-size: 0.98rem;
+      }
+
+      .ln-brand-sub {
+        display: block;
+        font-weight: 400;
+        font-size: 0.75rem;
+        color: var(--ln-muted);
+      }
+
+      .ln-nav {
+        display: flex;
+        gap: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .ln-nav a {
+        color: var(--ln-muted);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 0.15rem;
+      }
+
+      .ln-nav a:hover,
+      .ln-nav a.ln-active {
+        color: var(--ln-text);
+      }
+
+      .ln-nav a.ln-active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.2rem;
+        width: 100%;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(to right, #fb923c, #facc15);
+      }
+
+      @media (max-width: 820px) {
+        .ln-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .ln-nav {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Hero */
+
+      .trees-hero-eyebrow {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ln-muted);
+        font-size: 0.78rem;
+      }
+
+      .trees-hero-title {
+        font-size: clamp(2.1rem, 3vw + 1.1rem, 3rem);
+        margin: 0.45rem 0 0.4rem;
+      }
+
+      .trees-hero-sub {
+        color: var(--ln-muted);
+        max-width: 42rem;
+        font-size: 0.98rem;
+      }
+
+      .trees-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.1fr);
+        gap: 1.8rem;
+        margin-top: 2.1rem;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .trees-hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .trees-hero-orb-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .trees-hero-orb {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 25% 20%, #fff7ed, #fb923c);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          0 0 0 10px rgba(248, 250, 252, 0.02),
+          0 0 28px rgba(249, 115, 22, 0.6),
+          0 0 80px rgba(249, 115, 22, 0.65);
+      }
+
+      .trees-hero-orb span {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .trees-hero-ring {
+        position: absolute;
+        border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.16);
+      }
+
+      .trees-hero-ring.r1 {
+        width: 100%;
+        height: 100%;
+      }
+
+      .trees-hero-ring.r2 {
+        width: 72%;
+        height: 72%;
+      }
+
+      .trees-hero-ring.r3 {
+        width: 46%;
+        height: 46%;
+      }
+
+      .trees-hero-orb-caption {
+        margin-top: 0.8rem;
+        text-align: center;
+        font-size: 0.86rem;
+        color: var(--ln-muted);
+      }
+
+      /* Info cards under hero */
+
+      .trees-info {
+        margin-top: 2.3rem;
+      }
+
+      .trees-info-title {
+        font-size: 1.35rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .trees-info-lead {
+        color: var(--ln-muted);
+        max-width: 50rem;
+        font-size: 0.94rem;
+      }
+
+      .trees-info-grid {
+        margin-top: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+      }
+
+      @media (max-width: 900px) {
+        .trees-info-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .trees-card {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.98),
+          rgba(15, 23, 42, 0.93)
+        );
+        border-radius: 1rem;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--ln-border-soft);
+        box-shadow: var(--ln-shadow-soft);
+      }
+
+      .trees-card h3 {
+        font-size: 1.02rem;
+        margin: 0 0 0.55rem;
+      }
+
+      .trees-card p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        margin: 0 0 0.4rem;
+      }
+
+      .trees-card small {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--ln-muted);
+        margin-top: 0.25rem;
+      }
+
+      /* Trees list */
+
+      .trees-list-section {
+        margin-top: 2.6rem;
+      }
+
+      .trees-list-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .trees-list-sub {
+        color: var(--ln-muted);
+        font-size: 0.92rem;
+        max-width: 48rem;
+      }
+
+      .trees-grid {
+        margin-top: 1.6rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      @media (max-width: 1100px) {
+        .trees-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
+        .trees-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .trees-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .trees-tree-card {
+        background: radial-gradient(circle at top, #020617, #020617 50%, #020617);
+        border-radius: 1rem;
+        padding: 1.05rem 1.1rem 1.1rem;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 18px 55px rgba(15, 23, 42, 0.9);
+      }
+
+      .trees-tree-card h3 {
+        font-size: 0.98rem;
+        margin: 0 0 0.4rem;
+      }
+
+      .trees-tree-card p {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        margin: 0 0 0.35rem;
+      }
+
+      .trees-tree-card .card-meta {
+        font-size: 0.8rem;
+        color: var(--ln-muted);
+      }
+
+      .trees-tree-card a {
+        color: var(--ln-accent-soft);
+        text-decoration: none;
+      }
+
+      .trees-tree-card a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        margin-top: 2.7rem;
+        font-size: 0.83rem;
+        color: var(--ln-muted);
+        border-top: 1px solid rgba(148, 163, 184, 0.3);
+        padding-top: 0.9rem;
+      }
+
+      a {
+        color: var(--ln-accent-soft);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="site-header">
-      <div class="container nav">
-        <a href="/" class="brand">
-          <span class="brand-mark">LN</span>
-          <span class="brand-text">LuminaNexus</span>
-          <span class="brand-tagline">Light-linked learning</span>
+    <div class="ln-shell">
+      <!-- Header -->
+      <header class="ln-header">
+        <a href="/" class="ln-brand">
+          <div class="ln-brand-mark">LN</div>
+          <div class="ln-brand-text">
+            LuminaNexus
+            <span class="ln-brand-sub">Light-linked learning</span>
+          </div>
         </a>
-
-        <nav class="nav-links">
-          <a href="/" class="nav-link">Mission</a>
-          <a href="/trees/" class="nav-link nav-link-active">Trees</a>
-          <a href="/projects/" class="nav-link">Projects</a>
-          <a href="/library/" class="nav-link">Library</a>
-          <a href="/chavruta/" class="nav-link">Chavruta</a>
-          <a href="/get-involved/" class="nav-link">Get involved</a>
-          <a href="/contact/" class="nav-link">Contact</a>
+        <nav class="ln-nav">
+          <a href="/">Mission</a>
+          <a href="/trees/" class="ln-active">Trees</a>
+          <a href="/projects/">Projects</a>
+          <a href="/library/">Library</a>
+          <a href="/chavruta/">Chavruta</a>
+          <a href="/get-involved/">Get involved</a>
+          <a href="/contact/">Contact</a>
         </nav>
-      </div>
-    </header>
+      </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero hero-subpage">
-        <div class="container hero-layout">
-          <div class="hero-primary">
-            <p class="eyebrow">The Quantum Etz Chaim</p>
-            <h1>Trees growing from one living Field.</h1>
-            <p class="hero-lead">
-              LuminaNexus.org is built around a single Tree of Life, where each
-              “Tree” is a way the one Field shows a different face: origin,
-              stone, mirrors, snow, water, fire, song, and more. Some are active
-              projects, some are sefarim-in-waiting, all are branches of one
-              living Etz Chaim.
-            </p>
-          </div>
-
-          <div class="hero-badge">
-            <div class="orb orb-aleph">
-              <span class="orb-letter">א</span>
-            </div>
-            <p class="hero-badge-caption">
-              Aleph as the silent core: one Field, many branches.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CENTRAL TREE EXPLAINER -->
-      <section class="section">
-        <div class="container">
-          <h2 class="section-title">One Tree, many faces</h2>
-          <p class="section-intro">
-            In Kabbalah, <em>Etz Chaim</em> — the Tree of Life — is not just a
-            diagram. It is a way of seeing reality: one living Field expressing
-            through ten sefirot, twenty-two letters, and countless paths
-            between. The Quantum Etz Chaim takes that image and lets it grow
-            into stories, sefarim, learning tools, and sanctuaries.
+      <main>
+        <!-- Hero -->
+        <section class="trees-hero">
+          <div class="trees-hero-eyebrow">The Quantum Etz Chaim</div>
+          <h1 class="trees-hero-title">
+            Trees growing from one living Field.
+          </h1>
+          <p class="trees-hero-sub">
+            LuminaNexus.org is built around a single Tree of Life, where each
+            “Tree” is a way the one Field shows a different face: origin, stone,
+            mirrors, snow, water, fire, song, and more. Some are active
+            projects, some are sefarim-in-waiting, all are branches of one
+            living Etz Chaim.
           </p>
 
-          <div class="cards-grid">
-            <article class="card">
+          <div class="trees-hero-grid">
+            <div>
+              <p style="font-size: 0.92rem; margin-top: 1rem;">
+                In Kabbalah, <em>Etz Chaim</em> — the Tree of Life — is not just
+                a diagram. It is a way of seeing reality: one living Field
+                expressing through ten sefirot, twenty-two letters, and
+                countless paths between them. The Quantum Etz Chaim takes that
+                image seriously and lets it grow into stories, sefarim, learning
+                tools, and sanctuaries.
+              </p>
+            </div>
+
+            <div class="trees-hero-orb-wrap" aria-hidden="true">
+              <div class="trees-hero-orb">
+                <div class="trees-hero-ring r1"></div>
+                <div class="trees-hero-ring r2"></div>
+                <div class="trees-hero-ring r3"></div>
+                <span>א</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="trees-hero-orb-caption">
+            Aleph as the silent core: one Field, many branches.
+          </p>
+        </section>
+
+        <!-- Info cards -->
+        <section class="trees-info">
+          <h2 class="trees-info-title">One Tree, many faces</h2>
+          <p class="trees-info-lead">
+            The Quantum Etz Chaim is the “trunk” image for LuminaNexus. Each
+            named Tree is a way of walking one face of the Field more deeply,
+            whether as a sefer, an app, or a sanctuary.
+          </p>
+
+          <div class="trees-info-grid">
+            <article class="trees-card">
               <h3>The central trunk</h3>
               <p>
-                At the center is the Quantum Etz Chaim itself: a way of seeing
-                reality as one Field, tilted into many modes. The trunk is the
-                shared kavanah: that Torah, creativity, and technology can all
-                be different ways of touching the same light.
+                At the center is the Quantum Etz Chaim itself: one living Field
+                expressing as ten sefirot, twenty-two letters, and 231 Gates of
+                relationship. The trunk is the shared <em>kavanah</em> that
+                Torah, creativity, and technology can all be different ways of
+                touching the same light.
               </p>
-              <p class="card-meta">
-                Trunk: one Field, ten sefirot, 22 letters, 231 Gates.
-              </p>
+              <small
+                >Trunk projects: the main site, the Etz-Chaim diagram, and the
+                231 Gates map.</small
+              >
             </article>
 
-            <article class="card">
+            <article class="trees-card">
               <h3>Trees as sefarim</h3>
               <p>
                 Each named Tree is also a Sefer or cluster of Sefarim: long-form
-                work that walks through one face of the Field. They live in the
-                Library as books, and in Projects as experiments, apps, or
-                sanctuaries.
+                work that walks through one face of the Field. Some live as
+                mystical novels, others as essays, visual tools, or learning
+                projects. Together they form the
+                <strong>Celestial Library of the 231 Gates</strong>.
               </p>
-              <p class="card-meta">
-                Books under the Tree live in
-                <a href="/library/">the Celestial Library</a>.
-              </p>
+              <small
+                >Books under the Tree live in the
+                <a href="/library/">Library</a>.</small
+              >
             </article>
 
-            <article class="card">
+            <article class="trees-card">
               <h3>Gates between branches</h3>
               <p>
                 Between any two Trees there are “Gates”: pairings of letters,
                 sefirot, and ideas. Over time, the 231 Gates project will map
-                these connections as a clickable star-field — a way to wander
-                between branches without leaving the Tree.
+                these interconnections as a clickable star-field — a way to
+                wander between branches without leaving the Tree.
               </p>
-              <p class="card-meta">
-                22 letters × 21 pairings = 231 Gates of movement.
-              </p>
+              <small>22 letters × 21 pairings = 231 Gates of movement.</small>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- TREE LIST -->
-      <section class="section section-alt">
-        <div class="container">
-          <h2 class="section-title">Trees in this constellation</h2>
-          <p class="section-intro">
+        <!-- Trees list -->
+        <section class="trees-list-section">
+          <h2 class="trees-list-title">Trees in this constellation</h2>
+          <p class="trees-list-sub">
             These are the first named Trees of the Quantum Etz Chaim. Some have
             active manuscripts; others are still seedlings. All of them are
             invitations.
           </p>
 
-          <div class="cards-grid">
-            <article class="card">
+          <div class="trees-grid">
+            <article class="trees-tree-card">
               <h3>Etz HaReishit — The Tree of Origin</h3>
               <p>
                 Aleph as Field, Tilt, and Bridge. A modern walk through the Ari,
@@ -134,36 +500,36 @@
                 Sof into the Tree of Life.
               </p>
               <p class="card-meta">
-                Read an excerpt in
-                <a href="/library/sefer-aleph/">Sefer Aleph — Etz HaReishit</a>.
+                <a href="/trees/etz-hareishit/">Walk this Tree →</a>
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaEven — The Stone Tree</h3>
               <p>
                 A novel rooted in a piece of petrified wood found by your son
                 Matthew. Stone as frozen light, memory, judgment, and covenant.
               </p>
               <p class="card-meta">
-                Drafting in progress · will live in the Library as a Sefer-novel
+                Drafting in progress — will live in the Library as a Sefer-novel
                 under Stone.
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaMar’ah — The Tree of Mirrors</h3>
               <p>
-                Reflections, reversals, and the left-hand side of the Etz Chaim.
-                How gevurah, din, and the “other side” reveal themselves as
-                hidden chesed when seen through the right mirror.
+                Reflections, reversals, and the left-hand side of the Etz
+                Chaim. How <em>gevurah</em>, <em>din</em>, and the “other side”
+                reveal themselves as hidden <em>chesed</em> when seen through
+                the right mirror.
               </p>
               <p class="card-meta">
-                Connected to works like <em>Etz HaMareh – The Tree of Mirrors</em>.
+                Connected to works like <em>Etz HaMar’eh – The Tree of Mirrors</em>.
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaSheleg — The Tree of Snow</h3>
               <p>
                 Snow as silence, insulation, and hidden germination. Torah as
@@ -174,19 +540,19 @@
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaMayim — The Tree of Water</h3>
               <p>
-                Flow, wells, and mikvaot. The waters above and below, and the
-                way consciousness moves like a river through the vessels of the
-                sefirot.
+                Flow, wells, and <em>mikvaot</em>. The waters above and below,
+                and the way consciousness moves like a river through the vessels
+                of the sefirot.
               </p>
               <p class="card-meta">
                 Future Sefer: Torah, hydrology, and emotional flow.
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaEsh — The Tree of Fire</h3>
               <p>
                 Flame as both revelation and risk. From the burning bush to
@@ -198,19 +564,19 @@
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Etz HaShir — The Tree of Song</h3>
               <p>
-                Niggunim, waveforms, and the music of fields. This Tree is where
-                quantum frequencies, psalms, and human voices meet: from
-                Mountain-to-Melody tools to liturgical experiments.
+                <em>Niggunim</em>, waveforms, and the music of fields. This Tree
+                is where quantum frequencies, psalms, and human voices meet:
+                from Mountain-to-Melody tools to liturgical experiments.
               </p>
               <p class="card-meta">
                 Tied to apps like Mountain-to-Melody and musical Sefarim.
               </p>
             </article>
 
-            <article class="card">
+            <article class="trees-tree-card">
               <h3>Future Trees</h3>
               <p>
                 There is room for more: Trees of Time, Cities, Children, Dreams,
@@ -223,28 +589,13 @@
               </p>
             </article>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="footer-brand">
-          LuminaNexus.org · The Quantum Etz Chaim &amp; the Celestial Library of
-          the 231 Gates
-        </p>
-        <p class="footer-meta">
-          © <span id="year"></span> LuminaNexus. All rights reserved.
-        </p>
-      </div>
-    </footer>
-
-    <script>
-      // Footer year
-      const yearSpan = document.getElementById("year");
-      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    </script>
-    <script src="../script.js"></script>
+      <footer>
+        LuminaNexus.org · The Quantum Etz Chaim &amp; the Celestial Library of
+        the 231 Gates · © 2025 LuminaNexus. All rights reserved.
+      </footer>
+    </div>
   </body>
 </html>
